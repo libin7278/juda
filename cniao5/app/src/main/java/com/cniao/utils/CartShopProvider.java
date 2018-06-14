@@ -3,7 +3,7 @@ package com.cniao.utils;
 import android.content.Context;
 import android.util.SparseArray;
 
-import com.cniao.bean.HotGoods;
+import com.cniao.bean.HotGoodsBean;
 import com.cniao.bean.ShoppingCart;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -62,7 +62,7 @@ public class CartShopProvider {
     /**
      * 存入
      */
-    public void put(HotGoods.ListBean goods) {
+    public void put(HotGoodsBean.ListEntity goods) {
 
         ShoppingCart cart = convertData(goods);
         put(cart);
@@ -145,11 +145,10 @@ public class CartShopProvider {
         }
     }
 
-    public ShoppingCart convertData(HotGoods.ListBean item) {
+    public ShoppingCart convertData(HotGoodsBean.ListEntity item) {
 
         ShoppingCart cart = new ShoppingCart();
 
-        cart.setId(item.getId());
         cart.setImgUrl(item.getImgUrl());
         cart.setName(item.getName());
         cart.setPrice(item.getPrice());

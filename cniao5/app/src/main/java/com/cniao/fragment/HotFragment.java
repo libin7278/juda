@@ -14,6 +14,7 @@ import com.cniao.R;
 import com.cniao.activity.GoodsDetailsActivity;
 import com.cniao.adapter.HotGoodsAdapter;
 import com.cniao.bean.HotGoods;
+import com.cniao.bean.HotGoodsBean;
 import com.cniao.contants.HttpContants;
 import com.cniao.utils.LogUtil;
 import com.cniao.utils.ToastUtils;
@@ -56,7 +57,7 @@ public class HotFragment extends BaseFragment {
     private int  totalPage = 1;    //一共有多少页
     private int  pageSize  = 10;     //每页数目
     private Gson mGson     = new Gson();
-    private List<HotGoods.ListBean> datas;
+    private List<HotGoodsBean.ListEntity> datas;
     private HotGoodsAdapter         mAdatper;
 
 
@@ -129,7 +130,7 @@ public class HotFragment extends BaseFragment {
                 HotGoods hotGoods = mGson.fromJson(response, HotGoods.class);
                 totalPage = hotGoods.getTotalPage();
                 currPage = hotGoods.getCurrentPage();
-                datas = hotGoods.getList();
+                //datas = hotGoods.getList();
 
                 showData();
             }
@@ -167,7 +168,7 @@ public class HotFragment extends BaseFragment {
             @Override
             public void onItemClick(View view, int position) {
                 //借助currPage 和pageSize 可以实现默认情况和刷新时,都可以使用
-                HotGoods.ListBean listBean = datas.get(position - (currPage - 1) * pageSize);
+                HotGoodsBean.ListEntity listBean = datas.get(position - (currPage - 1) * pageSize);
                 Intent intent = new Intent(getContext(), GoodsDetailsActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

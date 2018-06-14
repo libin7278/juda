@@ -6,27 +6,28 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cjj.MaterialRefreshLayout;
+import com.cjj.MaterialRefreshListener;
 import com.cniao.R;
 import com.cniao.adapter.HotGoodsAdapter;
-import com.cniao.bean.HotGoods;
-import com.cniao.contants.Contants;
-import com.cniao.contants.HttpContants;
-import com.cniao.utils.LogUtil;
+import com.cniao.bean.HotGoodsBean;
+import com.cniao.utils.GetJsonDataUtil;
 import com.cniao.utils.ToastUtils;
 import com.cniao.widget.CNiaoToolBar;
 import com.google.gson.Gson;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import okhttp3.Call;
 
 /**
  * <pre>
@@ -43,41 +44,33 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
 
     public static final int ACTION_LIST = 3;                //列表形式
     public static final int ACTION_GIRD = 4;                //多列形式
-    private             int actionType  = ACTION_LIST;     //列表形式默认的值
+    private int actionType = ACTION_LIST;     //列表形式默认的值
 
     public static final int TAG_DEFAULT = 0;     //tabLayout 默认
-    public static final int TAG_SALE    = 1;     //tabLayout 价格
-    public static final int TAG_PRICE   = 2;     //tabLayout 销量
+    public static final int TAG_SALE = 1;     //tabLayout 价格
+    public static final int TAG_PRICE = 2;     //tabLayout 销量
 
     @BindView(R.id.tab_layout)
-    TabLayout             mTablayout;
+    TabLayout mTablayout;
     @BindView(R.id.txt_summary)
-    TextView              mTxtSummary;
+    TextView mTxtSummary;
     @BindView(R.id.recycler_view)
-    RecyclerView          mRecyclerview;
+    RecyclerView mRecyclerview;
     @BindView(R.id.refresh_layout)
     MaterialRefreshLayout mRefreshLayout;
     @BindView(R.id.toolbar)
-    CNiaoToolBar          mToolbar;
+    CNiaoToolBar mToolbar;
     @BindView(R.id.ll_summary)
-    LinearLayout          mLlSummary;
+    LinearLayout mLlSummary;
 
-    private long campaignId = 0;       //从上一个界面传递过来的参数,也是本界面请求接口的参数,以判断是点击哪里传过来的,进而请求接口
-    private Gson mGson      = new Gson();
-    private int  currPage   = 1;     //当前是第几页
-    private int  totalPage  = 1;    //一共有多少页
-    private int  pageSize   = 10;     //每页数目
-
-    private List<HotGoods.ListBean> datas;
-    private HotGoodsAdapter         mAdatper;
+    private List<HotGoodsBean.ListEntity> datas;
+    private HotGoodsAdapter mAdatper;
 
     @Override
     protected void init() {
 
         initToolBar();
-        campaignId = getIntent().getLongExtra(Contants.COMPAINGAIN_ID, 0);
         initTab();
-        getData();
     }
 
 
@@ -93,6 +86,30 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
         mToolbar.setRightButtonIcon(R.drawable.icon_grid_32);
         mToolbar.getRightButton().setTag(ACTION_LIST);
         mToolbar.setRightButtonOnClickListener(this);
+
+        mRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
+            @Override
+            public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        super.run();
+                        try {
+                            Thread.sleep(2000);//休眠3秒
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ToastUtils.showUiToast(GoodsListActivity.this, "数据刷新成功");
+                                }
+                            });
+                            materialRefreshLayout.finishRefresh();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }.start();
+            }
+        });
     }
 
 
@@ -118,16 +135,10 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
 
     }
 
-    private void getData() {
-
-    }
-
-
     @Override
     protected int getContentResourseId() {
         return R.layout.activity_goods_list;
     }
-
 
     @Override
     public void onClick(View v) {
@@ -148,33 +159,32 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
     @Override
     public void onTabSelected(final TabLayout.Tab tab) {
 
-        int orderBy = (int) tab.getTag();
+        String JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist1.json");
+        //获取assets目录下的json文件数据
 
-        String url = HttpContants.WARES_CAMPAIN_LIST
-                + "?campaignId=" + campaignId
-                + "&orderBy=" + orderBy
-                + "&curPage=" + 1
-                + "&pageSize=" + 10;
+        List<HotGoodsBean.ListEntity> goodList = parseData(JsonData);
+        datas = goodList;
 
-        OkHttpUtils.get().url(url).build().execute(new StringCallback() {
-            @Override
-            public void onError(Call call, Exception e, int id) {
-                LogUtil.e(TAG, "onResponse: " + "失败", true);
-            }
-
-            @Override
-            public void onResponse(String response, int id) {
-                LogUtil.e(TAG, "onResponse:成功 " + response, true);
-                HotGoods goodsBean = mGson.fromJson(response, HotGoods.class);
-                totalPage = goodsBean.getTotalPage();
-                currPage = goodsBean.getCurrentPage();
-                datas = goodsBean.getList();
-
-                showData();
-            }
-        });
+        showData();
     }
 
+    public List<HotGoodsBean.ListEntity> parseData(String result) {    //Gson 解析
+        List<HotGoodsBean.ListEntity> detail = new ArrayList<>();
+        try {
+            JSONObject object = new JSONObject(result);
+            JSONArray data = object.getJSONArray("list");
+            Gson gson = new Gson();
+            for (int i = 0; i < data.length(); i++) {
+                HotGoodsBean.ListEntity entity = gson.fromJson(data.optJSONObject(i).toString(),
+                        HotGoodsBean.ListEntity.class);
+                detail.add(entity);
+                Log.e("TAG", entity.getName());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return detail;
+    }
 
     @Override
     public void onTabUnselected(TabLayout.Tab tab) {
@@ -194,7 +204,7 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
             mTxtSummary.setText("共有" + datas.size() + "件商品");
         } else {
             mLlSummary.setVisibility(View.GONE);
-            ToastUtils.showUiToast(GoodsListActivity.this,"暂无商品信息");
+            ToastUtils.showUiToast(GoodsListActivity.this, "暂无商品信息");
             return;
         }
 
@@ -209,8 +219,5 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
         mRecyclerview.setItemAnimator(new DefaultItemAnimator());
         mRecyclerview.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration
                 .HORIZONTAL));
-
     }
-
-
 }

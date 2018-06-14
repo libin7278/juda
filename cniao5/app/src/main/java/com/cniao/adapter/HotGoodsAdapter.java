@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.cniao.CNiaoApplication;
 import com.cniao.R;
-import com.cniao.bean.HotGoods;
+import com.cniao.bean.HotGoodsBean;
 import com.cniao.utils.CartShopProvider;
 import com.cniao.utils.GlideUtils;
 import com.cniao.utils.ToastUtils;
@@ -27,13 +27,13 @@ import java.util.List;
 public class HotGoodsAdapter extends RecyclerView.Adapter<HotGoodsAdapter.ViewHolder> implements
         View.OnClickListener {
 
-    private List<HotGoods.ListBean> mDatas;
+    private List<HotGoodsBean.ListEntity> mDatas;
     private LayoutInflater          mInflater;
     CartShopProvider provider;
     private Context mContext;
     private OnItemClickListener mOnItemClickListener = null;
 
-    public HotGoodsAdapter(List<HotGoods.ListBean> datas, Context context) {
+    public HotGoodsAdapter(List<HotGoodsBean.ListEntity> datas, Context context) {
         this.mDatas = datas;
         this.mContext = context;
         provider = new CartShopProvider(mContext);
@@ -49,7 +49,7 @@ public class HotGoodsAdapter extends RecyclerView.Adapter<HotGoodsAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(HotGoodsAdapter.ViewHolder holder, int position) {
-        final HotGoods.ListBean data = getData(position);
+        final HotGoodsBean.ListEntity data = getData(position);
         GlideUtils.load(CNiaoApplication.sContext, data.getImgUrl(), holder.ivView);
         holder.textTitle.setText(data.getName());
         holder.textPrice.setText("￥" + data.getPrice());
@@ -68,11 +68,11 @@ public class HotGoodsAdapter extends RecyclerView.Adapter<HotGoodsAdapter.ViewHo
     }
 
 
-    private HotGoods.ListBean getData(int position) {
+    private HotGoodsBean.ListEntity getData(int position) {
         return mDatas.get(position);
     }
 
-    public List<HotGoods.ListBean> getDatas() {
+    public List<HotGoodsBean.ListEntity> getDatas() {
         return mDatas;
     }
 
@@ -81,11 +81,11 @@ public class HotGoodsAdapter extends RecyclerView.Adapter<HotGoodsAdapter.ViewHo
         notifyItemRangeRemoved(0, mDatas.size());
     }
 
-    public void addData(List<HotGoods.ListBean> datas) {
+    public void addData(List<HotGoodsBean.ListEntity> datas) {
         addData(0, datas);
     }
 
-    public void addData(int position, List<HotGoods.ListBean> datas) {
+    public void addData(int position, List<HotGoodsBean.ListEntity> datas) {
         if (datas != null && datas.size() > 0) {
             mDatas.addAll(datas);
             notifyItemRangeChanged(position, mDatas.size());

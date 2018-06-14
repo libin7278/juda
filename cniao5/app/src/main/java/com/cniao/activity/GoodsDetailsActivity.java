@@ -8,7 +8,7 @@ import android.webkit.JavascriptInterface;
 
 import com.cniao.CNiaoApplication;
 import com.cniao.R;
-import com.cniao.bean.HotGoods;
+import com.cniao.bean.HotGoodsBean;
 import com.cniao.bean.User;
 import com.cniao.contants.HttpContants;
 import com.cniao.helper.SharePresenter;
@@ -38,7 +38,7 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
     @BindView(R.id.webView)
     WebView      mWebView;
 
-    private HotGoods.ListBean goodsBean;
+    private HotGoodsBean.ListEntity goodsBean;
     private WebAppInterface   mAppInterfce;
     private CartShopProvider  cartProvider;
 
@@ -52,7 +52,7 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
 
         //接收数据
         Bundle bundle = getIntent().getExtras();
-        goodsBean = (HotGoods.ListBean) bundle.getSerializable("itemClickGoods");
+        goodsBean = (HotGoodsBean.ListEntity) bundle.getSerializable("itemClickGoods");
         if (goodsBean == null) {
             finish();
         }
@@ -138,7 +138,7 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    mWebView.loadUrl("javascript:showDetail(" + goodsBean.getId() + ")");
+                    mWebView.loadUrl("javascript:showDetail("  + ")");
                 }
             });
         }
@@ -172,8 +172,8 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
 
         Long userId = CNiaoApplication.getInstance().getUser().getId();
 
-        String url = HttpContants.FAVORITE_CREATE + "?user_id=" + userId + "&ware_id=" + goodsBean
-                .getId();
+//        String url = HttpContants.FAVORITE_CREATE + "?user_id=" + userId + "&ware_id=" + goodsBean
+//                .getId();
 
 
         OkHttpUtils.post().url(HttpContants.FAVORITE_CREATE).build().execute(new StringCallback() {
