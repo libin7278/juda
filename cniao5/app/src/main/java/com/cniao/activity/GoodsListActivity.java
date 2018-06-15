@@ -14,11 +14,13 @@ import android.widget.TextView;
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 import com.cniao.R;
-import com.cniao.adapter.HotGoodsAdapter;
+import com.cniao.adapter.WaresAdapter;
 import com.cniao.bean.HotGoodsBean;
+import com.cniao.contants.Contants;
 import com.cniao.utils.GetJsonDataUtil;
 import com.cniao.utils.ToastUtils;
 import com.cniao.widget.CNiaoToolBar;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -63,11 +65,17 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
     @BindView(R.id.ll_summary)
     LinearLayout mLlSummary;
 
+    private int index;
     private List<HotGoodsBean.ListEntity> datas;
-    private HotGoodsAdapter mAdatper;
+    private WaresAdapter mWaresAdapter;
 
     @Override
     protected void init() {
+        Fresco.initialize(this);
+
+        index = getIntent().getIntExtra(Contants.COMPAINGAIN_ID, 1);
+
+        Log.e("TAG", index + "=======");
 
         initToolBar();
         initTab();
@@ -159,7 +167,60 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
     @Override
     public void onTabSelected(final TabLayout.Tab tab) {
 
-        String JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist1.json");
+        // TODO: 2018/6/15 index
+        String JsonData;
+        switch (index) {
+            case 1:
+                if (TAG_SALE == (int) tab.getTag()) {
+                    JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist111.json");
+                } else if (TAG_PRICE == (int) tab.getTag()) {
+
+                    JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist11.json");
+                } else {
+                    JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist1.json");
+                }
+                break;
+            case 2:
+                if (TAG_SALE == (int) tab.getTag()) {
+                    JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist222.json");
+                } else if (TAG_PRICE == (int) tab.getTag()) {
+
+                    JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist22.json");
+                } else {
+                    JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist2.json");
+                }
+                break;
+            case 3:
+                if (TAG_SALE == (int) tab.getTag()) {
+                    JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist333.json");
+                } else if (TAG_PRICE == (int) tab.getTag()) {
+
+                    JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist33.json");
+                } else {
+                    JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist3.json");
+                }
+                break;
+            case 4:
+                if (TAG_SALE == (int) tab.getTag()) {
+                    JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist444.json");
+                } else if (TAG_PRICE == (int) tab.getTag()) {
+
+                    JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist44.json");
+                } else {
+                    JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist4.json");
+                }
+                break;
+            default:
+                if (TAG_SALE == (int) tab.getTag()) {
+                    JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist111.json");
+                } else if (TAG_PRICE == (int) tab.getTag()) {
+
+                    JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist11.json");
+                } else {
+                    JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist1.json");
+                }
+                break;
+        }
         //获取assets目录下的json文件数据
 
         List<HotGoodsBean.ListEntity> goodList = parseData(JsonData);
@@ -208,16 +269,33 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
             return;
         }
 
-        mAdatper = new HotGoodsAdapter(datas, this);
-        mRecyclerview.setAdapter(mAdatper);
+        if (mWaresAdapter == null) {
+            mWaresAdapter = new WaresAdapter(this, datas);
+        }
+        //mAdatper = new HotGoodsAdapter(datas, this);
+        mRecyclerview.setAdapter(mWaresAdapter);
         if (actionType == ACTION_LIST) {
-            mRecyclerview.setLayoutManager(new LinearLayoutManager(this));
-        } else {
+            //mRecyclerview.setLayoutManager(new LinearLayoutManager(this));
+
             mRecyclerview.setLayoutManager(new GridLayoutManager(this, 2));
+            if (mWaresAdapter != null) {
+                mWaresAdapter.resetLayout(R.layout.template_grid_wares);
+                mRecyclerview.setAdapter(mWaresAdapter);
+            }
+        } else {
+            //mRecyclerview.setLayoutManager(new GridLayoutManager(this, 2));
+
+            mRecyclerview.setLayoutManager(new LinearLayoutManager(this));
+            if (mWaresAdapter != null) {
+                mWaresAdapter.resetLayout(R.layout.template_list_wares);
+                mRecyclerview.setAdapter(mWaresAdapter);
+            }
         }
 
         mRecyclerview.setItemAnimator(new DefaultItemAnimator());
         mRecyclerview.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration
                 .HORIZONTAL));
+
+        mWaresAdapter.notifyDataSetChanged();
     }
 }

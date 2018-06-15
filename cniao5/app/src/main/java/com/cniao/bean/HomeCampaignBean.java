@@ -8,7 +8,6 @@ package com.cniao.bean;
 
 public class HomeCampaignBean {
 
-
     private Campaign cpOne;
     private Campaign   cpTwo;
     private Campaign cpThree;

@@ -72,15 +72,15 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
     private void moniCampaignData() {
         HomeCampaignBean bean1 = new HomeCampaignBean();
         Campaign campaign1 = new Campaign();
-        campaign1.setId((long) 101);
+        campaign1.setId(1);
         campaign1.setTitle("蕾丝仙女裙卖");
         campaign1.setImgUrl("https://gd1.alicdn.com/imgextra/i2/320969453/TB2Bnxfk5CYBuNkSnaVXXcMsVXa_!!320969453.jpg_400x400.jpg");
         Campaign campaign2 = new Campaign();
-        campaign2.setId((long) 102);
+        campaign2.setId(1);
         campaign2.setTitle("碎花长裙");
         campaign2.setImgUrl("https://gd1.alicdn.com/imgextra/i2/2511571313/TB2.TUouHuWBuNjSszgXXb8jVXa_!!2511571313.jpg_400x400.jpg");
         Campaign campaign3 = new Campaign();
-        campaign3.setId((long) 103);
+        campaign3.setId(1);
         campaign3.setTitle("超仙气质温柔");
         campaign3.setImgUrl("https://gd3.alicdn.com/imgextra/i4/3862507984/TB2GPxawCtYBeNjSspaXXaOOFXa_!!3862507984.jpg");
         bean1.setCpOne(campaign1);
@@ -92,15 +92,15 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
 
         HomeCampaignBean bean2 = new HomeCampaignBean();
         Campaign campaign21 = new Campaign();
-        campaign21.setId((long) 201);
+        campaign21.setId(2);
         campaign21.setTitle("a字裙长裙");
         campaign21.setImgUrl("https://gd1.alicdn.com/imgextra/i4/78123130/TB2.JRRtH5YBuNjSspoXXbeNFXa_!!78123130.jpg");
         Campaign campaign22 = new Campaign();
-        campaign22.setId((long) 202);
+        campaign22.setId(2);
         campaign22.setTitle("气质衬衣");
         campaign22.setImgUrl("https://gd2.alicdn.com/imgextra/i1/730254905/TB2EzXMqGSWBuNjSsrbXXa0mVXa-730254905.jpg_400x400.jpg_.webp");
         Campaign campaign23 = new Campaign();
-        campaign23.setId((long) 203);
+        campaign23.setId(2);
         campaign23.setTitle("宋慧乔同款");
         campaign23.setImgUrl("https://gd1.alicdn.com/imgextra/i2/647367415/TB2nj2KkMKTBuNkSne1XXaJoXXa_!!647367415.jpg_400x400.jpg");
         bean2.setCpOne(campaign21);
@@ -112,15 +112,15 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
 
         HomeCampaignBean bean3 = new HomeCampaignBean();
         Campaign campaign31 = new Campaign();
-        campaign31.setId((long) 301);
+        campaign31.setId(3);
         campaign31.setTitle("街头潮流");
         campaign31.setImgUrl("https://gw.alicdn.com/bao/uploaded/TB1cjl7dNWYBuNjy1zkSutGGpXa.jpg_440x440");
         Campaign campaign32 = new Campaign();
-        campaign32.setId((long) 302);
+        campaign32.setId(3);
         campaign32.setTitle("匠心设计");
         campaign32.setImgUrl("https://gw.alicdn.com/bao/uploaded/TB1CbgZb79WBuNjSspeSuuz5VXa.jpg_440x440q50.jpg");
         Campaign campaign33 = new Campaign();
-        campaign33.setId((long) 303);
+        campaign33.setId(3);
         campaign33.setTitle("潮牌");
         campaign33.setImgUrl("https://img.alicdn.com/bao/uploaded/i1/TB1TIYosNGYBuNjy0FnYXF5lpXa_M2.SS2_240x240.jpg");
         bean3.setCpOne(campaign31);
@@ -132,15 +132,15 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
 
         HomeCampaignBean bean4 = new HomeCampaignBean();
         Campaign campaign41 = new Campaign();
-        campaign41.setId((long) 401);
+        campaign41.setId(401);
         campaign41.setTitle("精选睡裙");
         campaign41.setImgUrl("https://gw.alicdn.com/tfs/TB1KZlnw_tYBeNjy1XdXXXXyVXa-800-800.jpg_.webp");
         Campaign campaign42 = new Campaign();
-        campaign42.setId((long) 402);
+        campaign42.setId(402);
         campaign42.setTitle("抹胸背心");
         campaign42.setImgUrl("https://gw.alicdn.com/tfs/TB1KN8ow_tYBeNjy1XdXXXXyVXa-800-800.jpg");
         Campaign campaign43 = new Campaign();
-        campaign43.setId((long) 403);
+        campaign43.setId(403);
         campaign43.setTitle("塑形");
         campaign43.setImgUrl("https://gw.alicdn.com/bao/uploaded/i1/2567117665/TB2DyN4mBUSMeJjy1zkXXaWmpXa_!!2567117665.jpg_180x180xz.jpg_.webp");
         bean4.setCpOne(campaign43);
@@ -226,6 +226,7 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
 
                 Intent intent = new Intent(getContext(), GoodsListActivity.class);
                 intent.putExtra(Contants.COMPAINGAIN_ID, campaign.getId());
+                Log.e("TAG",campaign.getId()+"=======");
                 startActivity(intent);
             }
         });
