@@ -1,11 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:clipToPadding="true"
-              android:fitsSystemWindows="true"
-              android:orientation="vertical"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
     <com.cniao.widget.CNiaoToolBar
         android:id="@id/toolbar"
@@ -16,13 +15,114 @@
         app:contentInsetEnd="56dp"
         app:isShowLeftIcon="true"
         app:isShowSearchView="false"
-        app:title="商品详情"
-        />
+        app:title="商品详情" />
 
-    <com.tencent.smtt.sdk.WebView
-        android:id="@id/webView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:scaleType="fitXY"
+                android:id="@+id/iv_main"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <TextView
+                android:id="@+id/tv_jieshao"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:padding="10dp"
+                android:textColor="@color/palevioletred"
+                android:background="@color/darkgrey"
+                android:text="sasdaasdasdada"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:padding="10dp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/red_btn_color_normal"
+                    android:textSize="18sp"
+                    android:id="@+id/tv_price"
+                    android:layout_alignParentLeft="true"
+                    android:text="￥ 200"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_marginRight="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_xiaoliang"
+                    android:text="库存：200"
+                    android:textSize="12sp"
+                    android:id="@+id/tv_kcun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_marginRight="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:text="总销量：200"
+                    android:textSize="12sp"
+                    android:id="@+id/tv_xiaoliang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+            <Button
+                android:layout_margin="15dp"
+                android:layout_gravity="end"
+                android:id="@+id/btn_jiarugouwuche"
+                style="@style/smallRedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:text="加入购物车" />
+            <TextView
+                android:gravity="center"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:background="@color/darkgray"
+                android:text="商品详情"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:padding="5dp"
+                android:id="@+id/iv_1"
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+
+            <ImageView
+                android:padding="5dp"
+                android:id="@+id/iv_2"
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+
+            <ImageView
+                android:padding="5dp"
+                android:id="@+id/iv_3"
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>

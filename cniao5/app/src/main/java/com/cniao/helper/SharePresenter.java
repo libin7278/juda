@@ -176,12 +176,11 @@ public class SharePresenter implements View.OnClickListener {
         //关闭sso授权
         oks.disableSSOWhenAuthorize();
         oks.setTitle(title);
-        oks.setTitleUrl("http://www.baidu.com");
+        oks.setTitleUrl("juda://firstm");
         oks.setText(description);
         oks.setUrl("http://sharesdk.cn");
-        oks.setSite("来自轻松购的分享");
-        oks.setSiteUrl("http://www.baidu.com");
-
+        oks.setSite("来自聚搭的分享");
+        oks.setSiteUrl("juda://firstm");
         // 启动分享GUI
         oks.show(mActivity);
 

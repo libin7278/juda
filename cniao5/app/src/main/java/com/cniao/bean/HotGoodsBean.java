@@ -1,5 +1,6 @@
 package com.cniao.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  *     desc  : XXX
  * </pre>
  */
-public class HotGoodsBean {
+public class HotGoodsBean implements Serializable{
 
 
     private List<ListEntity> list;
@@ -24,7 +25,7 @@ public class HotGoodsBean {
         this.list = list;
     }
 
-    public static class ListEntity {
+    public static class ListEntity implements Serializable{
         /**
          * repertory : 3000
          * allsales : 24321

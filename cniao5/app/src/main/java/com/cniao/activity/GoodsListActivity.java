@@ -1,5 +1,6 @@
 package com.cniao.activity;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 import com.cniao.R;
+import com.cniao.adapter.BaseAdapter;
 import com.cniao.adapter.WaresAdapter;
 import com.cniao.bean.HotGoodsBean;
 import com.cniao.contants.Contants;
@@ -167,7 +169,6 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
     @Override
     public void onTabSelected(final TabLayout.Tab tab) {
 
-        // TODO: 2018/6/15 index
         String JsonData;
         switch (index) {
             case 1:
@@ -271,6 +272,17 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
 
         if (mWaresAdapter == null) {
             mWaresAdapter = new WaresAdapter(this, datas);
+            mWaresAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    HotGoodsBean.ListEntity item = mWaresAdapter.getItem(position);
+
+                    Intent intent = new Intent(GoodsListActivity.this, GoodsDetailsActivity.class);
+
+                    intent.putExtra(Contants.WARE,item);
+                    startActivity(intent);
+                }
+            });
         }
         //mAdatper = new HotGoodsAdapter(datas, this);
         mRecyclerview.setAdapter(mWaresAdapter);

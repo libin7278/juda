@@ -11,7 +11,6 @@ package com.cniao.bean;
  */
 public class Category extends BaseBean {
 
-
     public Category() {
     }
 

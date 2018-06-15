@@ -50,6 +50,7 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
+                android:background="@drawable/weather_bg"
                 android:gravity="center"
                 app:cardBackgroundColor="#fff"
                 app:cardCornerRadius="4dp">
@@ -67,23 +68,26 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
+                            android:gravity="center"
                             android:padding="3dp"
                             android:text="目前您所在城市:"
                             android:textColor="@color/black"
-                            android:textSize="8sp" />
+                            android:textSize="12sp" />
 
                         <TextView
+                            android:text="西安"
                             android:id="@+id/tv_city"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_marginRight="5dp"
-                            android:layout_weight="4"
+                            android:layout_weight="3"
                             android:gravity="center"
-                            android:textColor="@color/base_color"
-                            android:textSize="30sp" />
+                            android:textColor="@color/orangered"
+                            android:textSize="28sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -93,28 +97,31 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:padding="3dp"
                             android:text="今天天气为:"
                             android:textColor="@color/black"
-                            android:textSize="8sp" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/tv_day_weather"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="2"
+                            android:layout_weight="3"
                             android:gravity="center"
-                            android:textColor="@color/base_color"
-                            android:textSize="17sp" />
+                            android:text="23℃"
+                            android:textColor="@color/ivory"
+                            android:textSize="24sp" />
 
                         <TextView
                             android:id="@+id/tv_night_weather"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="2"
+                            android:layout_weight="0"
                             android:gravity="center"
                             android:textColor="@color/base_color"
                             android:textSize="17sp" />

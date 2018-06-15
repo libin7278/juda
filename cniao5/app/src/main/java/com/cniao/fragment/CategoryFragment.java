@@ -7,6 +7,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,19 +30,18 @@ import com.cniao.bean.VFMessage;
 import com.cniao.bean.Weather;
 import com.cniao.contants.HttpContants;
 import com.cniao.service.LocationService;
+import com.cniao.utils.GetJsonDataUtil;
 import com.cniao.utils.LogUtil;
 import com.cniao.utils.ScreenUtils;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import org.json.JSONObject;
+
 import java.io.Serializable;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -62,41 +62,41 @@ public class CategoryFragment extends BaseFragment {
 
     private static final int STATE_NORMAL = 0;
     private static final int STATE_REFREH = 1;
-    private static final int STATE_MORE   = 2;
-    private              int state        = STATE_NORMAL;       //正常情况
+    private static final int STATE_MORE = 2;
+    private int state = STATE_NORMAL;       //正常情况
 
     @BindView(R.id.recyclerview_category)
-    RecyclerView          mRecyclerView;
+    RecyclerView mRecyclerView;
     @BindView(R.id.recyclerview_wares)
-    RecyclerView          mRecyclerviewWares;
+    RecyclerView mRecyclerviewWares;
     @BindView(R.id.refresh_layout)
     MaterialRefreshLayout mRefreshLaout;
     @BindView(R.id.vf_message)
-    ViewFlipper           mVfMessage;
+    ViewFlipper mVfMessage;
     @BindView(R.id.tv_city)
-    TextView              mCityName;
+    TextView mCityName;
     @BindView(R.id.tv_day_weather)
-    TextView              mDayWeather;
+    TextView mDayWeather;
     @BindView(R.id.tv_night_weather)
-    TextView              mNightWeather;
+    TextView mNightWeather;
 
-    private Gson           mGson         = new Gson();
+    private Gson mGson = new Gson();
     private List<Category> categoryFirst = new ArrayList<>();      //一级菜单
-    private CategoryAdapter         mCategoryAdapter;                      //一级菜单
-    private SecondGoodsAdapter      mSecondGoodsAdapter;              //二级菜单
-    private List<HotGoods.ListBean> datas;
-    private List<VFMessage>         mVFMessagesList;                 //上下轮播的信息
+    private CategoryAdapter mCategoryAdapter;                      //一级菜单
+    private SecondGoodsAdapter mSecondGoodsAdapter;              //二级菜单
+    private List<HotGoods.ListEntity> datas;
+    private List<VFMessage> mVFMessagesList;                 //上下轮播的信息
 
-    private String          provinceName;                                  //省份
-    private String          cityName;                                      //城市名
-    private String          dayWeather;
-    private String          nightWeather;
-    public  LocationClient  mLocationClient;
+    private String provinceName;                                  //省份
+    private String cityName;                                      //城市名
+    private String dayWeather;
+    private String nightWeather;
+    public LocationClient mLocationClient;
     private LocationService locationService;
 
-    private int currPage  = 1;     //当前是第几页
+    private int currPage = 1;     //当前是第几页
     private int totalPage = 1;    //一共有多少页
-    private int pageSize  = 10;     //每页数目
+    private int pageSize = 10;     //每页数目
 
 
     @Override
@@ -128,44 +128,30 @@ public class CategoryFragment extends BaseFragment {
 
 
     private void requestCategoryData() {
+        Category bean1 = new Category(1,"热门推荐");
+        Category bean2 = new Category(2,"品牌男装");
+        Category bean3 = new Category(3,"精品配饰");
+        Category bean4 = new Category(4,"个性化妆");
+        Category bean5 = new Category(5,"潮流女装");
+        categoryFirst.add(bean1);
+        categoryFirst.add(bean2);
+        categoryFirst.add(bean3);
+        categoryFirst.add(bean4);
+        categoryFirst.add(bean5);
 
-        OkHttpUtils.get().url(HttpContants.CATEGORY_LIST).build()
-                .execute(new StringCallback() {
 
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        LogUtil.e("分类一级", e + "", true);
-                    }
-
-                    @Override
-                    public void onResponse(String response, int id) {
-                        LogUtil.e("分类一级", response + "", true);
-
-                        Type collectionType = new TypeToken<Collection<Category>>() {
-                        }.getType();
-                        Collection<Category> enums = mGson.fromJson(response, collectionType);
-                        Iterator<Category> iterator = enums.iterator();
-                        while (iterator.hasNext()) {
-                            Category bean = iterator.next();
-                            categoryFirst.add(bean);
-                        }
-
-                        showCategoryData();
-                        defaultClick();
-
-                    }
-                });
+        showCategoryData();
+        defaultClick();
 
     }
 
-
     private void requestMessageData() {
 
-        mVFMessagesList.add(new VFMessage("1", "开学季,凭录取通知书购手机6折起"));
-        mVFMessagesList.add(new VFMessage("2", "都世丽人内衣今晚20点最低10元开抢"));
-        mVFMessagesList.add(new VFMessage("3", "购联想手机达3000元以上即送赠电脑包"));
-        mVFMessagesList.add(new VFMessage("4", "秋老虎到来,轻松购为您准备了这些必备生活用品"));
-        mVFMessagesList.add(new VFMessage("5", "穿了幸福时光男装,帅呆呆,妹子马上来"));
+        mVFMessagesList.add(new VFMessage("1", "没有点击，没有时尚"));
+        mVFMessagesList.add(new VFMessage("2", "女装搭配今晚20点最低10元开抢"));
+        mVFMessagesList.add(new VFMessage("3", "限量秒杀，就是倍儿爽"));
+        mVFMessagesList.add(new VFMessage("4", "聚搭今晚最高降价999元"));
+        mVFMessagesList.add(new VFMessage("5", "穿了聚搭男装,帅呆呆,妹子马上来"));
 
         if (!mVFMessagesList.isEmpty()) {
             mVfMessage.setVisibility(View.VISIBLE);
@@ -255,29 +241,35 @@ public class CategoryFragment extends BaseFragment {
      */
     private void requestWares(int firstCategorId) {
 
-        String url = HttpContants.WARES_LIST + "?categoryId=" + firstCategorId + "&curPage=" +
-                currPage + "&pageSize=" + pageSize;
+        String JsonData = GetJsonDataUtil.getJson(mContext, "fenlei1.json");
+        HotGoods hotGoods = parseData(JsonData);
+        totalPage = hotGoods.getTotalPage();
+        currPage = hotGoods.getCurrentPage();
+        datas = hotGoods.getList();
 
-        OkHttpUtils.get().url(url).build().execute(new StringCallback() {
+        showData();
+    }
 
-            @Override
-            public void onError(Call call, Exception e, int id) {
-                LogUtil.e("二级菜单", e + "", true);
-            }
-
-            @Override
-            public void onResponse(String response, int id) {
-                LogUtil.e("二级菜单", response + "", true);
-
-                HotGoods hotGoods = mGson.fromJson(response, HotGoods.class);
-                totalPage = hotGoods.getTotalPage();
-                currPage = hotGoods.getCurrentPage();
-                datas = hotGoods.getList();
-
-                showData();
-
-            }
-        });
+    public HotGoods parseData(String result) {    //Gson 解析
+        HotGoods detail = new HotGoods();
+        try {
+            JSONObject object = new JSONObject(result);
+            Gson gson = new Gson();
+            HotGoods hotGoods = gson.fromJson(result, HotGoods.class);
+            Log.e("hotGoods","hotGoods=="+hotGoods);
+            return hotGoods;
+//            JSONArray data = object.getJSONArray("list");
+//            Gson gson = new Gson();
+//            for (int i = 0; i < data.length(); i++) {
+//                HotGoods entity = gson.fromJson(data.optJSONObject(i).toString(),
+//                        HotGoods.class);
+//                detail.add(entity);
+//                Log.e("TAG", entity.getList().get(0));
+//            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return detail;
     }
 
     /**
@@ -295,7 +287,7 @@ public class CategoryFragment extends BaseFragment {
                     public void onItemClick(View view, RecyclerView.ViewHolder holder, int
                             position) {
 
-                        HotGoods.ListBean listBean = datas.get(position);
+                        HotGoods.ListEntity listBean = datas.get(position);
 
                         Intent intent = new Intent(getContext(), GoodsDetailsActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -312,7 +304,6 @@ public class CategoryFragment extends BaseFragment {
                         return false;
                     }
                 });
-
 
                 mRecyclerviewWares.setAdapter(mSecondGoodsAdapter);
                 mRecyclerviewWares.setLayoutManager(new GridLayoutManager(getContext(), 2));
@@ -356,7 +347,7 @@ public class CategoryFragment extends BaseFragment {
                 if (cityName != null) {
                     mCityName.setText(cityName.substring(0, cityName.length() - 1));
                 } else {
-                    mCityName.setText("上海");
+                    mCityName.setText("西安");
                 }
                 getCityWeather();
             } else {
@@ -411,8 +402,8 @@ public class CategoryFragment extends BaseFragment {
      * 展示天气数据
      */
     private void showWeather() {
-        mDayWeather.setText("白天: " + dayWeather);
-        mNightWeather.setText("晚间: " + nightWeather);
+        mDayWeather.setText("23 ℃" );
+        //mNightWeather.setText("晚间: " + nightWeather);
     }
 
 

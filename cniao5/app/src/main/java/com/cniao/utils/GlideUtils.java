@@ -39,6 +39,13 @@ public class GlideUtils {
                 .into(iv);
     }
 
+    public static void loadFull(Context context, String url, ImageView iv) {
+        Glide.with(context)
+                .load(url)
+                .fitCenter()
+                .into(iv);
+    }
+
     public static void loadRound(final Context context, String url, final ImageView iv) {
         Glide.with(context)//
                 .load(url)//

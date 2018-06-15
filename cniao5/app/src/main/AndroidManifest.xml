@@ -38,11 +38,14 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
+                <data android:scheme="juda"
+                    android:host="first"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.MainActivity"/>
-        <activity android:name=".activity.GoodsDetailsActivity"/>
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.GoodsDetailsActivity"
+            android:launchMode="singleTop"/>
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.AddressListActivity"/>
         <activity android:name=".activity.AddressAddActivity"/>
@@ -100,9 +103,7 @@
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="zbqExff1uz8XyUVn5GbyylomCa0rOkmP"
-            />
-        //key:开发者申请的Key
+            android:value="zbqExff1uz8XyUVn5GbyylomCa0rOkmP" />
 
         <service
             android:name="com.baidu.location.f"

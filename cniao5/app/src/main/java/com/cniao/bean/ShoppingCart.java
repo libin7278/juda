@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Describe:  购物车商品信息.数据来源于商品数据.但多了数量、是否选中两个 属性
  */
 
-public class ShoppingCart extends HotGoods.ListBean implements Serializable {
+public class ShoppingCart extends HotGoods.ListEntity implements Serializable {
 
     private int count;
     private boolean isChecked = true;

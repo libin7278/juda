@@ -18,15 +18,15 @@ import java.util.List;
  * Dscribe: 分类 二级菜单 适配器
  */
 
-public class SecondGoodsAdapter extends CommonAdapter<HotGoods.ListBean> {
+public class SecondGoodsAdapter extends CommonAdapter<HotGoods.ListEntity> {
 
-    public SecondGoodsAdapter(Context context, List<HotGoods.ListBean> datas) {
+    public SecondGoodsAdapter(Context context, List<HotGoods.ListEntity> datas) {
         super(context, R.layout.template_category_wares, datas);
 
     }
 
     @Override
-    protected void convert(ViewHolder holder, HotGoods.ListBean bean, int position) {
+    protected void convert(ViewHolder holder, HotGoods.ListEntity bean, int position) {
 
         holder.setText(R.id.text_title, bean.getName());
         holder.setText(R.id.text_price, "￥" + bean.getPrice());
