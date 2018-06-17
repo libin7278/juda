@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cniao.CNiaoApplication;
 import com.cniao.R;
@@ -20,6 +21,7 @@ import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -65,8 +67,17 @@ public class ShopCartAdapter extends CommonAdapter<ShoppingCart> implements Mult
         LogUtil.e("是否选中", position + "" + cart.isChecked(), true);
 
         NumberAddSubView numberAddSubView = (NumberAddSubView) holder.getView(R.id.num_control);
+        TextView textViewCount = (TextView) holder.getView(R.id.tv_count);
         numberAddSubView.setValue(cart.getCount());
+        textViewCount.setText(String.valueOf("数量 ： "+cart.getCount()));
 
+        if(cart.isNumberAddSubVisible()){
+            numberAddSubView.setVisibility(View.GONE);
+            textViewCount.setVisibility(View.VISIBLE);
+        }else {
+            numberAddSubView.setVisibility(View.VISIBLE);
+            textViewCount.setVisibility(View.GONE);
+        }
         numberAddSubView.setOnButtonClickListener(new NumberAddSubView.OnButtonClickListener() {
             @Override
             public void onButtonAddClick(View view, int value) {
@@ -83,7 +94,6 @@ public class ShopCartAdapter extends CommonAdapter<ShoppingCart> implements Mult
             }
         });
     }
-
 
     /**
      * 全选或者全不选
@@ -217,6 +227,40 @@ public class ShopCartAdapter extends CommonAdapter<ShoppingCart> implements Mult
         float total = getTotalPrice();
         mTextView.setText(Html.fromHtml("合计 ￥<span style='color:@color/base_red_color'>" + total + "</span>"),
                 TextView.BufferType.SPANNABLE);
+    }
+
+    /*
+     ** 设置NumberAddSub控件可见与隐藏
+     */
+    public void setNumberAddSubVisible(Boolean isVisible){
+        if(mDatas != null && mDatas.size() > 0){
+            int i=0;
+            for (ShoppingCart cart :mDatas){
+                cart.setIsNumberAddSubVisible(isVisible);
+                notifyItemChanged(i);
+                i++;
+            }
+            showTotalPrice();
+        }
+    }
+
+    public void delCart(){
+        if(mDatas != null && mDatas.size() > 0){
+            Boolean isChecked = false;
+            for(Iterator iterator = mDatas.iterator(); iterator.hasNext();){
+                ShoppingCart cart = (ShoppingCart) iterator.next();
+                if(cart.isChecked()){
+                    int position = mDatas.indexOf(cart);
+                    mCartShopProvider.delete(cart);
+                    iterator.remove();
+                    notifyItemRemoved(position);
+                    isChecked = true;
+                }
+            }
+            if(!isChecked){
+                Toast.makeText(mContext,"您还没有选择宝贝哦！",Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
 }

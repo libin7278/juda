@@ -68,8 +68,8 @@ public class MainActivity extends BaseActivity {
         Tab tab_mine = new Tab(MineFragment.class, R.string.mine, R.drawable.selector_icon_mine);
 
         mTabs.add(tab_home);
-        mTabs.add(tab_hot);
         mTabs.add(tab_category);
+        mTabs.add(tab_hot);
         mTabs.add(tab_shop);
         mTabs.add(tab_mine);
 

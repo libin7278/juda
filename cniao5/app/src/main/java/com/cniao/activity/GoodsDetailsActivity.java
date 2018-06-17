@@ -1,6 +1,7 @@
 package com.cniao.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -163,6 +164,8 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
     @OnClick(R.id.btn_jiarugouwuche)
     public void onViewClicked() {
         cartProvider.put(goodsBean);
+        Log.e("TAG","goodsBean=="+goodsBean.getId());
+
         ToastUtils.showSafeToast(GoodsDetailsActivity.this, "已添加到购物车");
     }
 }

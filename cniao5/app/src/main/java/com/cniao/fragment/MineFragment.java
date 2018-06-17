@@ -10,8 +10,8 @@ import com.cniao.CNiaoApplication;
 import com.cniao.R;
 import com.cniao.activity.AddressListActivity;
 import com.cniao.activity.LoginActivity;
-import com.cniao.activity.MyFavoriteActivity;
 import com.cniao.activity.MyOrdersActivity;
+import com.cniao.activity.SearchResultActivity;
 import com.cniao.bean.User;
 import com.cniao.contants.Contants;
 import com.cniao.utils.ToastUtils;
@@ -62,7 +62,7 @@ public class MineFragment extends BaseFragment {
                 startActivity(new Intent(getActivity(), AddressListActivity.class), true);
                 break;
             case R.id.txt_my_favorite:    //我的收藏
-                startActivity(new Intent(getActivity(), MyFavoriteActivity.class), true);
+                startActivity(new Intent(getActivity(), SearchResultActivity.class), true);
                 break;
             case R.id.txt_my_orders:     //我的点单
                 startActivity(new Intent(getActivity(), MyOrdersActivity.class), true);

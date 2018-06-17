@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
 import com.cniao.R;
@@ -87,11 +88,10 @@ public class SearchActivity extends BaseActivity {
 
         //TODO 真正开发这里的数据从后台获取
 
-        hotSearchData.add("华为手机");
-        hotSearchData.add("玫瑰花");
-        hotSearchData.add("移动硬盘");
-        hotSearchData.add("android高级进阶");
-        hotSearchData.add("蚕丝被");
+        hotSearchData.add("美妆");
+        hotSearchData.add("配饰");
+        hotSearchData.add("女装");
+        hotSearchData.add("男装");
         mHotSearchAdapter.notifyDataSetChanged();
     }
 
@@ -207,7 +207,20 @@ public class SearchActivity extends BaseActivity {
         Bundle bundle = new Bundle();
         bundle.putString("search", content);
         Intent intent = new Intent(SearchActivity.this, SearchResultActivity.class);
-        intent.putExtras(bundle);
+        String s = mEditText.getText().toString().trim();
+        Log.e("TAG","==============="+s);
+        if(content.contains("男装")){
+            intent.putExtra("type_search",2);
+        }else if(content.contains("配饰")){
+            intent.putExtra("type_search",3);
+        }else if(content.contains("美妆")){
+            intent.putExtra("type_search",4);
+        }else if(content.contains("女装")){
+            intent.putExtra("type_search",5);
+        }else {
+            intent.putExtra("type_search",1);
+        }
+
         startActivity(intent);     //跳转到搜索结果界面
 
     }

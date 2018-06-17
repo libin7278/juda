@@ -77,8 +77,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:minHeight="60dp"
-            android:minWidth="120dp"
+            android:minHeight="40dp"
+            android:minWidth="80dp"
             android:text="删除"
             android:visibility="gone"
             />

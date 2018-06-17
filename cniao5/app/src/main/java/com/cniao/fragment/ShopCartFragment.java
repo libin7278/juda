@@ -4,13 +4,13 @@ import android.content.Intent;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.cniao.R;
 import com.cniao.activity.CreateOrderActivity;
@@ -41,28 +41,28 @@ import butterknife.OnClick;
 
 public class ShopCartFragment extends BaseFragment implements View.OnClickListener {
 
-    public static final  int    ACTION_EDIT     = 1;
-    public static final  int    ACTION_CAMPLATE = 2;
-    private static final String TAG             = "CartFragment";
+    public static final int ACTION_EDIT = 1;
+    public static final int ACTION_CAMPLATE = 2;
+    private static final String TAG = "CartFragment";
 
     @BindView(R.id.recycler_view)
-    RecyclerView   mRecyclerView;
+    RecyclerView mRecyclerView;
     @BindView(R.id.checkbox_all)
-    CheckBox       mCheckBox;
+    CheckBox mCheckBox;
     @BindView(R.id.txt_total)
-    TextView       mTextTotal;
+    TextView mTextTotal;
     @BindView(R.id.btn_order)
-    Button         mBtnOrder;
+    Button mBtnOrder;
     @BindView(R.id.btn_del)
-    Button         mBtnDel;
+    Button mBtnDel;
     @BindView(R.id.toolbar)
-    CNiaoToolBar   mToolbar;
+    CNiaoToolBar mToolbar;
     @BindView(R.id.rv_bottom)
     RelativeLayout mRvBottom;
     @BindView(R.id.ll_empty)
-    LinearLayout   mLlEmpty;
+    LinearLayout mLlEmpty;
 
-    private ShopCartAdapter  mAdapter;
+    private ShopCartAdapter mAdapter;
     private CartShopProvider mCartShopProvider;
 
     @Override
@@ -89,7 +89,7 @@ public class ShopCartFragment extends BaseFragment implements View.OnClickListen
         mToolbar.getRightButton().setVisibility(View.VISIBLE);
         mToolbar.setRightButtonText("编辑");
         mToolbar.getRightButton().setOnClickListener(this);
-        mToolbar.getRightButton().setTag(ACTION_EDIT);
+        mToolbar.getRightButton().setTag(ACTION_CAMPLATE);
     }
 
 
@@ -100,15 +100,19 @@ public class ShopCartFragment extends BaseFragment implements View.OnClickListen
 
         List<ShoppingCart> carts = mCartShopProvider.getAll();
 
-        if (carts == null) {
-            initEmptyView();           //如果数据为空,显示空的试图
+        Log.e("TAG","===="+carts.size());
+        if (carts == null || carts.size() == 0) {
+            initEmptyView();
+            mToolbar.getRightButton().setVisibility(View.INVISIBLE);
+            //如果数据为空,显示空的试图
             return;
-        }
+        }mToolbar.getRightButton().setVisibility(View.VISIBLE);
 
         /**
          * 购物车数据不为空
          */
         mAdapter = new ShopCartAdapter(getContext(), carts, mCheckBox, mTextTotal);
+        hideDelControl();
         mRecyclerView.setAdapter(mAdapter);
         //recyclerView本身存在一个bug,在删 添加数据同时进行时,会报错:
         // java.lang.IndexOutOfBoundsException: Inconsistency detected. Invalid view holder
@@ -132,7 +136,10 @@ public class ShopCartFragment extends BaseFragment implements View.OnClickListen
     public void viewClick(View view) {
         switch (view.getId()) {
             case R.id.btn_del:
-                //                mAdapter.delCart();
+                if(mAdapter != null){
+                    mAdapter.delCart();
+                    initEmptyView();
+                }
                 break;
             case R.id.btn_order:
                 Intent intent = new Intent(getContext(), CreateOrderActivity.class);
@@ -158,9 +165,36 @@ public class ShopCartFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(getContext(), "就要点你", Toast.LENGTH_SHORT).show();
+        int action = (int) view.getTag();
+        if(action == ACTION_EDIT){
+            showDelControl();
+        }else if(action == ACTION_CAMPLATE){
+            hideDelControl();
+        }
     }
 
+    private void showDelControl() {
+        mToolbar.getRightButton().setText("编辑");
+        mBtnOrder.setVisibility(View.VISIBLE);
+        mBtnDel.setVisibility(View.GONE);
+        if(mAdapter != null){
+            mAdapter.setNumberAddSubVisible(true);
+        }
+        mToolbar.getRightButton().setTag(ACTION_CAMPLATE);
+    }
+
+
+    private void hideDelControl(){
+        mToolbar.getRightButton().setText("完成");
+        mBtnOrder.setVisibility(View.GONE);
+        mBtnDel.setVisibility(View.VISIBLE);
+        if(mAdapter != null){
+
+            mAdapter.setNumberAddSubVisible(false);
+        }
+        mToolbar.getRightButton().setTag(ACTION_EDIT);
+
+    }
 
     /**
      * 刷新数据
@@ -183,30 +217,6 @@ public class ShopCartFragment extends BaseFragment implements View.OnClickListen
             initEmptyView();
             return;
         }
-
-
-        /**
-         * 不能按照下面的逻辑写.
-         * 因为第二次进入购物车界面时,fragment生命周期没有走 init方法.
-         * 如果一开始购物车为空,按照showData()的逻辑,adapter是没有初始化的,即mAdapter为空
-         * 即使后面再添加商品到购物车中,因为没有执行 init() 方法,而init()方法内的 show() 方法自然也不会执行.此时mAdpter依旧为空
-         * 一直都在执行else中的逻辑
-         * 所以需要根据carts的值来判断
-         */
-
-        //        //有数据
-        //        if (mAdapter != null && mAdapter.getDatas() != null) {
-        //            mAdapter.getDatas().clear();
-        //            List<ShoppingCart> carts = mCartShopProvider.getAll();
-        //            mAdapter.addData(carts);
-        //            mAdapter.showTotalPrice();
-        //        }
-        //        //没有数据
-        //        else {
-        //            initEmptyView();
-        //            return;
-        //        }
-
 
     }
 

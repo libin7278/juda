@@ -1,6 +1,7 @@
 package com.cniao.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,32 +9,23 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.cniao.CNiaoApplication;
 import com.cniao.R;
 import com.cniao.adapter.GoodsOrderAdapter;
-import com.cniao.bean.Charge;
 import com.cniao.bean.ShoppingCart;
 import com.cniao.contants.Contants;
-import com.cniao.contants.HttpContants;
-import com.cniao.msg.CreateOrderRespMsg;
-import com.cniao.msg.LoginRespMsg;
 import com.cniao.utils.CartShopProvider;
 import com.cniao.utils.LogUtil;
+import com.cniao.utils.ToastUtils;
 import com.cniao.widget.FullyLinearLayoutManager;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.Callback;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.Call;
-import okhttp3.Response;
 
 
 /**
@@ -92,6 +84,7 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
         showData();
         initView();
     }
+
 
 
     private void initView() {
@@ -167,9 +160,28 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
 
     private void postNewOrder() {
 
-        final List<ShoppingCart> carts = mAdapter.getDatas();
+        List<ShoppingCart> carts = mAdapter.getDatas();
 
-        List<WareItem> items = new ArrayList<>(carts.size());
+        ToastUtils.showUiToast(this,"支付成功 ");
+
+        Intent intent = new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("serinfo", (Serializable) carts);
+        intent.setClass(CreateOrderActivity.this, MyOrdersActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+
+        for(Iterator iterator = carts.iterator(); iterator.hasNext();){
+            ShoppingCart cart = (ShoppingCart) iterator.next();
+            if(cart.isChecked()){
+                int position = carts.indexOf(cart);
+                cartProvider.delete(cart);
+                iterator.remove();
+            }
+        }
+
+        finish();
+        /*List<WareItem> items = new ArrayList<>(carts.size());
         for (ShoppingCart c : carts) {
             // c.getPrice()  是double类型    而接口总价为int 类型,需要转化
 
@@ -219,7 +231,7 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
                         orderNum = response.getData().getOrderNum();
                         Charge charge = response.getData().getCharge();
                     }
-                });
+                });*/
 
     }
 

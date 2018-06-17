@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:clipToPadding="true"
-              android:fitsSystemWindows="true"
-              android:orientation="vertical"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
     <com.cniao.widget.CNiaoToolBar
         android:id="@+id/toolbar"
@@ -15,14 +14,23 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         app:isShowLeftIcon="true"
-        app:title="我的订单"
-        />
+        app:title="我的订单" />
 
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_order"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="我的订单"
-        android:textColor="@color/colorPrimary"
-        />
+        android:layout_weight="1"
+        android:background="@color/white" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_no"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="暂无订单"
+        android:textColor="@color/colorPrimary" />
 
 </LinearLayout>

@@ -55,7 +55,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
-                        android:text="高磊华 (138****9512)"
+                        android:text="长在海里的土豆 (138****9512)"
                         android:textColor="@color/black"
                         android:textSize="@dimen/base_text_size"
                         />
@@ -64,7 +64,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="武汉市高新技术开发区未来科技城华为研究院"
+                        android:text="陕西省西安市"
                         android:textColor="@color/gray"
                         />
                 </LinearLayout>

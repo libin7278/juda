@@ -12,6 +12,7 @@ public class ShoppingCart extends HotGoods.ListEntity implements Serializable {
 
     private int count;
     private boolean isChecked = true;
+    private boolean isNumberAddSubVisible = false;
 
     public int getCount() {
         return count;
@@ -28,5 +29,24 @@ public class ShoppingCart extends HotGoods.ListEntity implements Serializable {
     public void setIsChecked(boolean isChecked) {
         this.isChecked = isChecked;
     }
+
+    public boolean isNumberAddSubVisible() {
+        return isNumberAddSubVisible;
+    }
+
+    public void setIsNumberAddSubVisible(boolean isNumberAddSubVisible) {
+        this.isNumberAddSubVisible = isNumberAddSubVisible;
+    }
+
+    private Float totalPrice = Float.valueOf(0);
+
+    public Float getTotalPrice() {
+        if(count == 0){
+            count = 1;
+        }
+        totalPrice = (float) getPrice() * count;
+        return totalPrice;
+    }
+
 
 }

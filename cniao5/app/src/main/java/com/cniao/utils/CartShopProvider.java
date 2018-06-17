@@ -1,6 +1,7 @@
 package com.cniao.utils;
 
 import android.content.Context;
+import android.util.Log;
 import android.util.SparseArray;
 
 import com.cniao.bean.HotGoodsBean;
@@ -44,6 +45,7 @@ public class CartShopProvider {
      */
     public void put(ShoppingCart cart) {
 
+        Log.e("TAG","=======put" +cart.getId());
         ShoppingCart temp = datas.get(cart.getId());
 
         if (temp != null) {
@@ -152,7 +154,7 @@ public class CartShopProvider {
         cart.setImgUrl(item.getImgUrl());
         cart.setName(item.getName());
         cart.setPrice(item.getPrice());
-
+        cart.setId(item.getId());
         return cart;
     }
 
