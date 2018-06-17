@@ -8,24 +8,16 @@ import android.widget.TextView;
 import com.cniao.CNiaoApplication;
 import com.cniao.R;
 import com.cniao.bean.User;
-import com.cniao.contants.Contants;
-import com.cniao.contants.HttpContants;
-import com.cniao.msg.LoginRespMsg;
-import com.cniao.utils.DESUtil;
 import com.cniao.utils.ToastUtils;
 import com.cniao.widget.CNiaoToolBar;
 import com.cniao.widget.ClearEditText;
-import com.google.gson.Gson;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.Callback;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.Call;
-import okhttp3.Response;
 
 /**
  * Created by 高磊华
@@ -36,13 +28,15 @@ import okhttp3.Response;
 public class LoginActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
-    CNiaoToolBar  mToolBar;
+    CNiaoToolBar mToolBar;
     @BindView(R.id.etxt_phone)
     ClearEditText mEtxtPhone;
     @BindView(R.id.etxt_pwd)
     ClearEditText mEtxtPwd;
     @BindView(R.id.txt_toReg)
-    TextView      mTxtToReg;
+    TextView mTxtToReg;
+    @BindView(R.id.tv_forget)
+    TextView tv_forget;
 
     @Override
     protected void init() {
@@ -65,7 +59,7 @@ public class LoginActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.btn_login, R.id.txt_toReg})
+    @OnClick({R.id.btn_login, R.id.txt_toReg, R.id.tv_forget})
     public void viewclick(View view) {
         switch (view.getId()) {
             case R.id.btn_login:
@@ -74,6 +68,10 @@ public class LoginActivity extends BaseActivity {
             case R.id.txt_toReg:
                 Intent intent = new Intent(this, RegActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.tv_forget:
+                Intent intent1 = new Intent(this, RegSecondActivity.class);
+                startActivity(intent1);
                 break;
         }
     }
@@ -85,50 +83,48 @@ public class LoginActivity extends BaseActivity {
 
         String phone = mEtxtPhone.getText().toString().trim();
         if (TextUtils.isEmpty(phone)) {
-            ToastUtils.showSafeToast(LoginActivity.this,"请输入手机号码");
+            ToastUtils.showSafeToast(LoginActivity.this, "请输入手机号码");
+            return;
+        }
+
+        String regex = "^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17[013678])|(18[0,5-9]))\\d{8}$";
+        if (phone.length() != 11) {
+            ToastUtils.showSafeToast(LoginActivity.this, "手机号应为11位数");
+            return;
+        }
+
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(phone);
+        boolean isMatch = m.matches();
+        if (!isMatch) {
+            ToastUtils.showSafeToast(LoginActivity.this, "您的手机号" + phone + "是错误格式！！！");
             return;
         }
 
         String pwd = mEtxtPwd.getText().toString().trim();
         if (TextUtils.isEmpty(pwd)) {
-            ToastUtils.showSafeToast(LoginActivity.this,"请输入密码");
+            ToastUtils.showSafeToast(LoginActivity.this, "请输入密码");
             return;
         }
 
-        Map<String, String> params = new HashMap<>();
-        params.put("phone", phone);
-        params.put("password", DESUtil.encode(Contants.DES_KEY, pwd));
+        String[] names = {"星空", "先知", "火山", "惧沓", "美丽小姐姐", "帅气小哥哥", "随风洒", "美男子"};
+        CNiaoApplication application = CNiaoApplication.getInstance();
+        String url = "http://up.qqjia.com/z/18/tu20457_2.jpg";
+        String name = names[new Random().nextInt(8)];
+        User user = new User(Long.parseLong(mEtxtPhone.getText().toString().trim()),
+                "123456@qq.com",
+                url,
+                name,
+                mEtxtPhone.getText().toString().trim());
+        application.putUser(user, mEtxtPhone.getText().toString().trim());
+        if (application.getIntent() == null) {
+            setResult(RESULT_OK);
+            finish();
+        } else {
+            application.jumpToTargetActivity(LoginActivity.this);
+            finish();
+        }
 
-        OkHttpUtils.post().url(HttpContants.LOGIN).params(params).build().execute(new Callback<LoginRespMsg<User>>() {
-            @Override
-            public LoginRespMsg<User> parseNetworkResponse(Response response, int id) throws
-                    Exception {
-
-                String string = response.body().string();
-                LoginRespMsg loginRespMsg = new Gson().fromJson(string, LoginRespMsg.class);
-                return loginRespMsg;
-
-            }
-
-            @Override
-            public void onError(Call call, Exception e, int id) {
-            }
-
-            @Override
-            public void onResponse(LoginRespMsg<User> response, int id) {
-
-                CNiaoApplication application = CNiaoApplication.getInstance();
-                application.putUser(response.getData(), response.getToken());
-                if (application.getIntent()==null) {
-                    setResult(RESULT_OK);
-                    finish();
-                }else {
-                    application.jumpToTargetActivity(LoginActivity.this);
-                    finish();
-                }
-
-            }
-        });
     }
 
     @Override

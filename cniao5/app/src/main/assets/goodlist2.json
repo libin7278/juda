@@ -1,182 +1,196 @@
 ﻿{
-    "list": [{
-        "repertory": 3000,
-        "allsales": 24321,
-        "name": "美发师夏季个性两件套嘻哈宽松套装夜店DJ韩版潮流时尚服装街舞男 ",
-        "imgUrl": "https://gd4.alicdn.com/imgextra/i2/2121202225/TB2tW8Ok5CYBuNkSnaVXXcMsVXa_!!2121202225.jpg",
-        "price": 299,
-        "sale": 89,
-        "detailimageOne": "https://img.alicdn.com/imgextra/i3/2121202225/TB2nZ1ltgmTBuNjy1XbXXaMrVXa_!!2121202225.jpg",
-        "detailimageTwo": "https://img.alicdn.com/imgextra/i4/2121202225/TB2.njmtb5YBuNjSspoXXbeNFXa_!!2121202225.jpg",
-        "detailimageThree": "https://img.alicdn.com/imgextra/i4/2121202225/TB27_nmtb5YBuNjSspoXXbeNFXa_!!2121202225.jpg"
+  "list": [
+    {
+      "id": 4511,
+      "repertory": 200,
+      "allsales": 3000,
+      "name": "恩曼琳18夏新品优雅镂空蕾丝雕花撞色翻领系带短袖连衣裙EAN8BA12 ",
+      "imgUrl": "https://img.alicdn.com/imgextra/i4/1098364456/TB2jkxskx9YBuNjy0FfXXXIsVXa_!!1098364456.jpg_430x430q90.jpg",
+      "price": 239,
+      "sale": 173,
+      "detailimageOne": "https://img.alicdn.com/imgextra/i3/1098364456/TB2TgvtaVuWBuNjSspnXXX1NVXa_!!1098364456.jpg",
+      "detailimageTwo": "https://img.alicdn.com/imgextra/i1/1098364456/TB2eI6qa29TBuNjy0FcXXbeiFXa_!!1098364456.jpg",
+      "detailimageThree": "https://img.alicdn.com/imgextra/i4/1098364456/TB2EH6kaVmWBuNjSspdXXbugXXa_!!1098364456.jpg"
     },
-        {
-            "repertory": 59,
-            "allsales": 47,
-            "name": "曼斯布莱顿男装西服套装男士商务正装修身羊毛灰色西装745005",
-            "imgUrl": "https://img.alicdn.com/imgextra/i3/839425485/TB2A67WaxSYBuNjSspjXXX73VXa_!!839425485.jpg_430x430q90.jpg",
-            "price": 6239,
-            "sale": 3973,
-            "detailimageOne": "https://img.alicdn.com/imgextra/i4/839425485/TB2Th85ak7mBKNjSZFyXXbydFXa_!!839425485.jpg",
-            "detailimageTwo": "https://img.alicdn.com/imgextra/i3/839425485/TB2_aH8jmCWBuNjy0FhXXb6EVXa_!!839425485.png",
-            "detailimageThree": "https://img.alicdn.com/imgextra/i2/839425485/TB2ewUtb1OSBuNjy0FdXXbDnVXa_!!839425485.jpg"
-        },
-        {
-            "repertory": 60,
-            "allsales": 43,
-            "name": "FULL MONTY鸟眼纹羊毛西服套装男士商务修身西装两件套半麻衬 ",
-            "imgUrl": "https://img.alicdn.com/imgextra/i1/2934698065/TB2UQQTchrI8KJjy0FpXXb5hVXa_!!2934698065.jpg_430x430q90.jpg",
-            "price": 3422,
-            "sale": 2600,
-            "detailimageOne": "https://img.alicdn.com/imgextra/i3/2934698065/TB2vDTDbk.HL1JjSZFlXXaiRFXa_!!2934698065.jpg",
-            "detailimageTwo": "https://img.alicdn.com/imgextra/i1/2934698065/TB2pFmwaUl7MKJjSZFDXXaOEpXa_!!2934698065.jpg",
-            "detailimageThree": "https://img.alicdn.com/imgextra/i2/2934698065/TB2qfjvboEIL1JjSZFFXXc5kVXa_!!2934698065.jpg"
-
-        },
-        {
-            "repertory": 120,
-            "allsales": 368,
-            "name": "休塔春夏西服套装男婚礼商务男士结婚礼服新郎英伦深蓝正装男修身",
-            "imgUrl": "https://img.alicdn.com/imgextra/i2/473572985/TB2_xEqfrorBKNjSZFjXXc_SpXa_!!473572985.jpg_430x430q90.jpg",
-            "price": 2599,
-            "sale": 1899,
-            "detailimageOne": "https://img.alicdn.com/imgextra/i1/473572985/TB2vqb.q79WBuNjSspeXXaz5VXa_!!473572985.jpg",
-            "detailimageTwo": "https://img.alicdn.com/imgextra/i1/473572985/TB2PSwAq1uSBuNjy1XcXXcYjFXa_!!473572985.jpg",
-            "detailimageThree": "https://img.alicdn.com/imgextra/i4/473572985/TB2_Y6Uq4SYBuNjSsphXXbGvVXa_!!473572985.jpg"
-
-        },
-        {
-            "repertory": 270,
-            "allsales": 688,
-            "name": "韩国东大门英伦修身双排扣西服男条纹套装商务男士西装套装两件套 ",
-            "imgUrl": "https://gd4.alicdn.com/imgextra/i4/2110531557/TB2xZqya9iJ.eBjSszfXXa4bVXa_!!2110531557.jpg_400x400.jpg",
-            "price": 2199,
-            "sale": 1800,
-            "detailimageOne": "https://img.alicdn.com/imgextra/i4/2110531557/TB2xZqya9iJ.eBjSszfXXa4bVXa_!!2110531557.jpg",
-            "detailimageTwo": "https://img.alicdn.com/imgextra/i4/2110531557/TB2jr1paYaI.eBjy1XdXXcoqXXa_!!2110531557.jpg",
-            "detailimageThree": "https://img.alicdn.com/imgextra/i3/2110531557/TB2ZbyDa39J.eBjSsppXXXAAVXa_!!2110531557.jpg"
-
-        },
-        {
-            "repertory": 45,
-            "allsales": 20,
-            "name": "川泽薄款竖条纹西装两件套男2018春夏英伦时尚青年休闲西服套装潮 ",
-            "imgUrl": "https://gd1.alicdn.com/imgextra/i4/TB18oFRkHuWBuNjSszgYXH8jVXa_M2.SS2_400x400.jpg",
-            "price": 4239,
-            "sale": 3979,
-            "detailimageOne": "https://img.alicdn.com/imgextra/i1/60645109/TB2yFqjkNSYBuNjSspjXXX73VXa_!!60645109.jpg",
-            "detailimageTwo": "https://img.alicdn.com/imgextra/i2/60645109/TB2R6SJkNGYBuNjy0FnXXX5lpXa_!!60645109.jpg",
-            "detailimageThree": "https://img.alicdn.com/imgextra/i1/60645109/TB2lpJ.kKySBuNjy1zdXXXPxFXa_!!60645109.jpg"
-        },
-        {
-            "repertory": 467,
-            "allsales": 256,
-            "name": "青年英伦风西装修身韩版男士西服套装两件套结婚新郎伴郎西服礼服 ",
-            "imgUrl": "https://gd4.alicdn.com/imgextra/i3/2110531557/TB2tAwEaRHH8KJjy0FbXXcqlpXa_!!2110531557.jpg",
-            "price": 2399,
-            "sale": 1900,
-            "detailimageOne": "https://img.alicdn.com/imgextra/i1/2110531557/TB2XjkGaTTI8KJjSsphXXcFppXa_!!2110531557.jpg",
-            "detailimageTwo": "https://img.alicdn.com/imgextra/i3/2110531557/TB2Te3RaLDH8KJjy1XcXXcpdXXa_!!2110531557.jpg",
-            "detailimageThree": "https://img.alicdn.com/imgextra/i4/2110531557/TB2.3wJaHYI8KJjy0FaXXbAiVXa_!!2110531557.jpg"
-        },
-        {
-            "repertory": 345,
-            "allsales": 233,
-            "name": "西装男套装正装三件套修身休闲韩版复古英伦风小西服新郎结婚礼服 ",
-            "imgUrl": "https://gd1.alicdn.com/imgextra/i2/TB1BWEahwvD8KJjSsplYXGIEFXa_M2.SS2",
-            "price": 4599,
-            "sale": 3999,
-            "detailimageOne": "https://img.alicdn.com/imgextra/i3/2545334743/TB2mp7ChBTH8KJjy0FiXXcRsXXa_!!2545334743.jpg",
-            "detailimageTwo": "https://img.alicdn.com/imgextra/i3/2545334743/TB2oJ.BXPb.heNjSZFAXXchKXXa_!!2545334743.jpg",
-            "detailimageThree": "https://img.alicdn.com/imgextra/i4/2545334743/TB2LusBXPb.heNjSZFAXXchKXXa_!!2545334743.jpg"
-        },
-        {
-            "repertory": 728,
-            "allsales": 332,
-            "name": "西服套装男 秋季修身商务正装职业装韩版结婚礼服 男士西装两件套",
-            "imgUrl": "https://img.alicdn.com/imgextra/i2/772194926/TB2NDiSlctnpuFjSZFvXXbcTpXa_!!772194926.jpg_430x430q90.jpg",
-            "price": 3699,
-            "sale": 3200,
-            "detailimageOne": "https://img.alicdn.com/imgextra/i4/772194926/TB2UAewjrRkpuFjSspmXXc.9XXa_!!772194926.jpg",
-            "detailimageTwo": "https://img.alicdn.com/imgextra/i3/772194926/TB2pcqajxXkpuFjy0FiXXbUfFXa_!!772194926.jpg",
-            "detailimageThree": "https://img.alicdn.com/imgextra/i3/772194926/TB2BGyQlipnpuFjSZFIXXXh2VXa_!!772194926.jpg"
-        },
-        {
-            "repertory": 89,
-            "allsales": 134,
-            "name": "Goldlion/金利来男士含羊毛缎面拼接修身商务西服西装外套 ",
-            "imgUrl": "https://img.alicdn.com/imgextra/i2/1711217080/TB207GValLN8KJjSZFPXXXoLXXa_!!1711217080.jpg_430x430q90.jpg",
-            "price": 5239,
-            "sale": 3999,
-            "detailimageOne": "https://img.alicdn.com/imgextra/i1/1711217080/TB2nQGVagjN8KJjSZFkXXaboXXa_!!1711217080.jpg",
-            "detailimageTwo": "https://img.alicdn.com/imgextra/i3/1711217080/TB2vUvabwvD8KJjSsplXXaIEFXa_!!1711217080.jpg",
-            "detailimageThree": "https://img.alicdn.com/imgextra/i2/1711217080/TB2leYkbwnD8KJjy1XdXXaZsVXa_!!1711217080.jpg"
-        },
-        {
-            "repertory": 76,
-            "allsales": 388,
-            "name": "西服套装男 秋季修身商务正装职业装韩版结婚礼服 男士西装两件套",
-            "imgUrl": "https://img.alicdn.com/imgextra/i2/772194926/TB2NDiSlctnpuFjSZFvXXbcTpXa_!!772194926.jpg_430x430q90.jpg",
-            "price": 4699,
-            "sale": 3400,
-            "detailimageOne": "https://img.alicdn.com/imgextra/i4/772194926/TB2UAewjrRkpuFjSspmXXc.9XXa_!!772194926.jpg",
-            "detailimageTwo": "https://img.alicdn.com/imgextra/i3/772194926/TB2pcqajxXkpuFjy0FiXXbUfFXa_!!772194926.jpg",
-            "detailimageThree": "https://img.alicdn.com/imgextra/i3/772194926/TB2BGyQlipnpuFjSZFIXXXh2VXa_!!772194926.jpg"
-        },
-        {
-            "repertory": 875,
-            "allsales": 470,
-            "name": "浅色西服套装男英伦夏季白色条纹戗驳领婚礼修身双排扣西装两件套 ",
-            "imgUrl": "https://gd1.alicdn.com/imgextra/i4/0/TB1ToK6Xoz.BuNjt_bXXXcQmpXa_!!0-item_pic.jpg",
-            "price": 4720,
-            "sale": 3899,
-            "detailimageOne": "https://img.alicdn.com/imgextra/i2/28334166/TB2fFnClb1YBuNjSszeXXablFXa_!!28334166.jpg",
-            "detailimageTwo": "https://img.alicdn.com/imgextra/i4/28334166/TB2F0Y0leySBuNjy1zdXXXPxFXa_!!28334166.jpg",
-            "detailimageThree": "https://img.alicdn.com/imgextra/i4/28334166/TB2FWf1lb5YBuNjSspoXXbeNFXa_!!28334166.jpg"
-        },
-        {
-            "repertory": 369,
-            "allsales": 460,
-            "name": "BIGGEZI 英伦复古绅士军绿色细条纹西装套装 时尚修身西服两件套 ",
-            "imgUrl": "https://gd1.alicdn.com/imgextra/i4/352428798/TB2vZLwcFHM8KJjSZJiXXbx3FXa_!!352428798.jpg",
-            "price": 7239,
-            "sale": 5973,
-            "detailimageOne": "https://img.alicdn.com/imgextra/i3/352428798/TB25idrh22H8KJjy0FcXXaDlFXa_!!352428798.jpg",
-            "detailimageTwo": "https://img.alicdn.com/imgextra/i4/352428798/TB2Kd8Fh3LD8KJjSszeXXaGRpXa_!!352428798.jpg",
-            "detailimageThree": "https://img.alicdn.com/imgextra/i2/352428798/TB20.dBh8TH8KJjy0FiXXcRsXXa_!!352428798.jpg"
-        },
-        {
-            "repertory": 5679,
-            "allsales": 3600,
-            "name": "健身服男紧身衣三件套健身房晨跑步速干篮球运动套装训练服装夏季",
-            "imgUrl": "https://img.alicdn.com/imgextra/https://img.alicdn.com/imgextra/i1/761129123/TB2mwWxfOOYBuNjSsD4XXbSkFXa_!!761129123.jpg_430x430q90.jpg",
-            "price": 120,
-            "sale": 80,
-            "detailimageOne": "https://img.alicdn.com/imgextra/i3/761129123/TB2FFn6n7OWBuNjSsppXXXPgpXa_!!761129123.jpg",
-            "detailimageTwo": "https://img.alicdn.com/imgextra/i4/761129123/TB2082Tn29TBuNjy0FcXXbeiFXa_!!761129123.jpg",
-            "detailimageThree": "https://img.alicdn.com/imgextra/i3/761129123/TB2FFn6n7OWBuNjSsppXXXPgpXa_!!761129123.jpg"
-        },
-        {
-            "repertory": 9274,
-            "allsales": 5737,
-            "name": "跑步运动套装男夏季薄款户外速干运动衣夏天健身服短袖休闲两件套",
-            "imgUrl": "https://img.alicdn.com/imgextra/i2/2165980612/TB2ZoUCv7CWBuNjy0FaXXXUlXXa_!!2165980612-0-item_pic.jpg_430x430q90.jpg",
-            "price": 135,
-            "sale": 99,
-            "detailimageOne": "https://img.alicdn.com/imgextra/i4/2165980612/TB2OGXzeyQnBKNjSZFmXXcApVXa_!!2165980612.jpg",
-            "detailimageTwo": "https://img.alicdn.com/imgextra/i2/2165980612/TB28Yp_ox1YBuNjy1zcXXbNcXXa_!!2165980612.jpg",
-            "detailimageThree": "https://img.alicdn.com/imgextra/i1/2165980612/TB2X0_YorSYBuNjSspiXXXNzpXa_!!2165980612.jpg"
-        },
-        {
-            "repertory": 3672,
-            "allsales": 4574,
-            "name": "男士套装2018新款夏季韩版潮流帅气薄款衣服迷彩休闲运动服两件套  ",
-            "imgUrl": "https://gd2.alicdn.com/imgextra/i2/2324161383/TB2V5uuhnlYBeNjSszcXXbwhFXa_!!2324161383.jpg",
-            "price": 160,
-            "sale": 125,
-            "detailimageOne": "https://img.alicdn.com/imgextra/i4/2324161383/TB2z.IKg4SYBuNjSsphXXbGvVXa_!!2324161383.jpg",
-            "detailimageTwo": "https://img.alicdn.com/imgextra/i3/2324161383/TB2SgjkhntYBeNjy1XdXXXXyVXa_!!2324161383.jpg",
-            "detailimageThree": "https://img.alicdn.com/imgextra/i1/2324161383/TB2TKlmbYsrBKNjSZFpXXcXhFXa_!!2324161383.jpg"
-        }
-    ]
+    {
+      "id": 4512,
+      "repertory": 200,
+      "allsales": 3000,
+      "name": "恩曼琳18夏新优雅蕾丝立领五分喇叭袖波浪下摆收腰连衣裙EAN8BA10",
+      "imgUrl": "https://img.alicdn.com/imgextra/i3/1098364456/TB2DWPBcFkoBKNjSZFkXXb4tFXa_!!1098364456.jpg_430x430q90.jpg",
+      "price": 539,
+      "sale": 473,
+      "detailimageOne": "https://img.alicdn.com/imgextra/i2/1098364456/TB2w2hne1SSBuNjy0FlXXbBpVXa_!!1098364456.jpg",
+      "detailimageTwo": "https://img.alicdn.com/imgextra/i2/1098364456/TB2kMtKe49YBuNjy0FfXXXIsVXa_!!1098364456.jpg",
+      "detailimageThree": "https://img.alicdn.com/imgextra/i3/1098364456/TB2bHRwe21TBuNjy0FjXXajyXXa_!!1098364456.jpg"
+    },
+    {
+      "id": 4513,
+      "repertory": 200,
+      "allsales": 3000,
+      "name": "lda天使之泪 lolita洛丽塔【悠长旋律】提琴高腰背心js连衣裙 ",
+      "imgUrl": "https://gd3.alicdn.com/imgextra/i3/3376854885/TB2NtjXdfiSBuNkSnhJXXbDcpXa_!!3376854885.jpg",
+      "price": 999,
+      "sale": 773,
+      "detailimageOne": "https://img.alicdn.com/imgextra/i4/3376854885/TB2IF5AlUR1BeNjy0FmXXb0wVXa_!!3376854885.jpg",
+      "detailimageTwo": "https://img.alicdn.com/imgextra/i3/3376854885/TB2yGMIc8nTBKNjSZPfXXbf1XXa_!!3376854885.jpg",
+      "detailimageThree": "https://img.alicdn.com/imgextra/i3/3376854885/TB2C..3lv5TBuNjSspmXXaDRVXa_!!3376854885.jpg"
+    },
+    {
+      "id": 4514,
+      "repertory": 200,
+      "allsales": 3000,
+      "name": "linjou玲玖2018春新品甜美漏肩高腰显瘦一字领雪纺连衣裙小黑裙女 ",
+      "imgUrl": "https://gd1.alicdn.com/imgextra/i1/704652697/TB1PwQCb41YBuNjy1zcXXbNcXXa_!!0-item_pic.jpg",
+      "price": 679,
+      "sale": 373,
+      "detailimageOne": "https://img.alicdn.com/imgextra/i2/704652697/TB2YFjVduuSBuNjSsziXXbq8pXa_!!704652697.jpg",
+      "detailimageTwo": "https://img.alicdn.com/imgextra/i2/704652697/TB2E_Lzb9tYBeNjSspaXXaOOFXa_!!704652697.jpg",
+      "detailimageThree": "https://img.alicdn.com/imgextra/i1/704652697/TB2pIePalsmBKNjSZFsXXaXSVXa_!!704652697.jpg"
+    },
+    {
+      "id": 4515,
+      "repertory": 200,
+      "allsales": 3000,
+      "name": "日本代购cecile水手服西装裙套装 JK校服制服连衣裙 背心裙 ",
+      "imgUrl": "https://gd3.alicdn.com/imgextra/i3/914432083/TB24AkthAfb_uJjSsrbXXb6bVXa_!!914432083.jpg",
+      "price": 569,
+      "sale": 343,
+      "detailimageOne": "https://img.alicdn.com/imgextra/i2/914432083/TB2b8CGi6nD8KJjSspbXXbbEXXa_!!914432083.png",
+      "detailimageTwo": "https://img.alicdn.com/imgextra/i1/914432083/TB2S2d7i_nI8KJjSszgXXc8ApXa_!!914432083.png",
+      "detailimageThree": "https://img.alicdn.com/imgextra/i1/914432083/TB2joami3nH8KJjSspcXXb3QFXa_!!914432083.jpg"
+    },
+    {
+      "id": 4516,
+      "repertory": 200,
+      "allsales": 3000,
+      "name": "Mary【全款】原创设计丝绒小甜心LOLITA针织吊带两件套连衣裙 ",
+      "imgUrl": "https://gd1.alicdn.com/imgextra/i4/3359575732/TB2gIWNXntYBeNjy1XdXXXXyVXa_!!3359575732.jpg",
+      "price": 659,
+      "sale": 234,
+      "detailimageOne": "https://img.alicdn.com/imgextra/i2/3359575732/TB2xAiGphrI8KJjy0FpXXb5hVXa_!!3359575732.jpg",
+      "detailimageTwo": "https://img.alicdn.com/imgextra/i4/3359575732/TB2RetFXXOWBuNjy0FiXXXFxVXa_!!3359575732.jpg",
+      "detailimageThree": "https://img.alicdn.com/imgextra/i1/3359575732/TB20imrpgnH8KJjSspcXXb3QFXa_!!3359575732.jpg"
+    },
+    {
+      "id": 4517,
+      "repertory": 200,
+      "allsales": 3000,
+      "name": "Lily Brown2018春夏新品 镂空花朵刺绣风衣外套LWFC181037",
+      "imgUrl": "https://img.alicdn.com/imgextra/i1/1971205547/TB2ydjbif1TBuNjy0FjXXajyXXa_!!1971205547.jpg_430x430q90.jpg",
+      "price": 879,
+      "sale": 345,
+      "detailimageOne": "https://img.alicdn.com/imgextra/i3/1971205547/TB25y2.XKSSBuNjy0FlXXbBpVXa_!!1971205547.jpg",
+      "detailimageTwo": "https://img.alicdn.com/imgextra/i2/1971205547/TB2ef7aXL9TBuNjy1zbXXXpepXa_!!1971205547.jpg",
+      "detailimageThree": "https://img.alicdn.com/imgextra/i4/1971205547/TB2Hv_ggCtYBeNjSspaXXaOOFXa_!!1971205547.jpg"
+    },
+    {
+      "id": 4518,
+      "repertory": 200,
+      "allsales": 3000,
+      "name": "猫鱼奇妙物语 原创星空网纱仙女梦幻亮片水手领连衣裙夏季 ",
+      "imgUrl": "https://gd2.alicdn.com/imgextra/i3/TB1CzyciKOSBuNjy0FdYXHDnVXa_M2.SS2_400x400.jpg",
+      "price": 345,
+      "sale": 173,
+      "detailimageOne": "https://img.alicdn.com/imgextra/i2/3229641482/TB2qtuFh9CWBuNjy0FhXXb6EVXa_!!3229641482.jpg",
+      "detailimageTwo": "https://img.alicdn.com/imgextra/i2/3229641482/TB2xC9Zh7yWBuNjy0FpXXassXXa_!!3229641482.jpg",
+      "detailimageThree": "https://img.alicdn.com/imgextra/i1/3229641482/TB2DXOkhYSYBuNjSspiXXXNzpXa_!!3229641482.jpg"
+    },
+    {
+      "id": 4519,
+      "repertory": 200,
+      "allsales": 3000,
+      "name": "COTRE 独立设计 灰调锡兰、芭蕾灰紫吊带连衣裙女新款2018春高腰 ",
+      "imgUrl": "https://gd2.alicdn.com/imgextra/i1/57526744/TB2fIfPXQCWBuNjy0FaXXXUlXXa_!!57526744.jpg",
+      "price": 339,
+      "sale": 223,
+      "detailimageOne": "https://img.alicdn.com/imgextra/i4/57526744/TB2GOQDXnCWBKNjSZFtXXaC3FXa_!!57526744.jpg",
+      "detailimageTwo": "https://img.alicdn.com/imgextra/i4/57526744/TB2N6XtX_JYBeNjy1zeXXahzVXa_!!57526744.jpg",
+      "detailimageThree": "https://img.alicdn.com/imgextra/i1/57526744/TB2TbksXljTBKNjSZFDXXbVgVXa_!!57526744.jpg"
+    },
+    {
+      "id": 4520,
+      "repertory": 200,
+      "allsales": 3000,
+      "name": "乐町★●夏装新款女蕾丝拼接T恤裙宽松连衣裙A字裙韩版高腰短袖潮",
+      "imgUrl": "https://img.alicdn.com/imgextra/i3/513051429/TB2tjAtefiSBuNkSnhJXXbDcpXa_!!513051429.jpg_430x430q90.jpg",
+      "price": 239,
+      "sale": 143,
+      "detailimageOne": "https://img.alicdn.com/imgextra/i3/513051429/TB2owHkdqQoBKNjSZJnXXaw9VXa_!!513051429.jpg",
+      "detailimageTwo": "https://img.alicdn.com/imgextra/i1/513051429/TB23KymmNWYBuNjy1zkXXXGGpXa_!!513051429.jpg",
+      "detailimageThree": "https://img.alicdn.com/imgextra/i2/513051429/TB25SsAeiCYBuNkHFCcXXcHtVXa_!!513051429.jpg"
+    },
+    {
+      "id": 4521,
+      "repertory": 200,
+      "allsales": 3000,
+      "name": "MC迷韩国代购官网夏装女装milkcocoa露背交叉蝴蝶结红吊带连衣裙 ",
+      "imgUrl": "https://gd3.alicdn.com/imgextra/i4/113433387/TB2ZLVwkpXXXXaHXpXXXXXXXXXX_!!113433387.jpg_400x400.jpg",
+      "price": 549,
+      "sale": 373,
+      "detailimageOne": "https://img.alicdn.com/imgextra/i3/1706829011/TB2oHyKXVXXXXXuXpXXXXXXXXXX-1706829011.jpg",
+      "detailimageTwo": "https://img.alicdn.com/imgextra/i3/1706829011/TB2zQmJXVXXXXacXpXXXXXXXXXX-1706829011.jpg",
+      "detailimageThree": "https://img.alicdn.com/imgextra/i4/1706829011/TB2g7yKXVXXXXc6XXXXXXXXXXXX-1706829011.jpg"
+    },
+    {
+      "id": 4522,
+      "repertory": 200,
+      "allsales": 3000,
+      "name": "MC迷韩国代购官网夏装女装milkcocoa森女方领格子高腰中裙连衣裙 ",
+      "imgUrl": "https://gd4.alicdn.com/imgextra/i3/0/TB1KhY0xXOWBuNjy0FiXXXFxVXa_!!0-item_pic.jpg",
+      "price": 659,
+      "sale": 323,
+      "detailimageOne": "https://img.alicdn.com/imgextra/i4/113433387/TB2kEgYxkSWBuNjSszdXXbeSpXa_!!113433387.jpg",
+      "detailimageTwo": "https://img.alicdn.com/imgextra/i1/113433387/TB239lcioOWBKNjSZKzXXXfWFXa_!!113433387.jpg",
+      "detailimageThree": "https://img.alicdn.com/imgextra/i4/113433387/TB2RSsjxoR1BeNjy0FmXXb0wVXa_!!113433387.jpg"
+    },
+    {
+      "id": 4523,
+      "repertory": 200,
+      "allsales": 3000,
+      "name": "【梗豆物语】独家原创 学院风 菱双高优等生正统JK制服连衣裙 ",
+      "imgUrl": "https://gd3.alicdn.com/imgextra/i3/1644008796/TB2VniCwER1BeNjy0FmXXb0wVXa_!!1644008796.jpg",
+      "price": 199,
+      "sale": 79,
+      "detailimageOne": "https://img.alicdn.com/imgextra/i4/1644008796/TB2J0WPpcuYBuNkSmRyXXcA3pXa_!!1644008796.jpg",
+      "detailimageTwo": "https://img.alicdn.com/imgextra/i1/1644008796/TB2Bts9n8mWBuNkSndVXXcsApXa_!!1644008796.jpg",
+      "detailimageThree": "https://img.alicdn.com/imgextra/i4/1644008796/TB2BAM6hHZnBKNjSZFKXXcGOVXa_!!1644008796.jpg"
+    },
+    {
+      "id": 4524,
+      "repertory": 200,
+      "allsales": 3000,
+      "name": "【榛果可可花束】 STRAWBERRY!! 草莓LOLITA轻甜吊带裙 【现货】 ",
+      "imgUrl": "https://gd3.alicdn.com/imgextra/i3/2703379462/TB2099hXpooBKNjSZPhXXc2CXXa_!!2703379462.jpg",
+      "price": 219,
+      "sale": 93,
+      "detailimageOne": "https://img.alicdn.com/imgextra/i1/2703379462/TB2T6XNaXOWBuNjy0FiXXXFxVXa_!!2703379462.jpg",
+      "detailimageTwo": "https://img.alicdn.com/imgextra/i3/2703379462/TB2w_1oaXuWBuNjSspnXXX1NVXa_!!2703379462.jpg",
+      "detailimageThree": "https://img.alicdn.com/imgextra/i2/2703379462/TB2lQWHXA7mBKNjSZFyXXbydFXa_!!2703379462.jpg"
+    },
+    {
+      "id": 4525,
+      "repertory": 200,
+      "allsales": 3000,
+      "name": "两三事梵高正版授权虚怀落抱2018夏装新款蝴蝶结绑带假两件连衣裙 ",
+      "imgUrl": "https://img.alicdn.com/imgextra/i4/25004642/TB2KJIruTlYBeNjSszcXXbwhFXa_!!25004642.jpg",
+      "price": 899,
+      "sale": 473,
+      "detailimageOne": "https://img.alicdn.com/imgextra/i1/25004642/TB2Zgl6t7CWBuNjy0FaXXXUlXXa_!!25004642.jpg",
+      "detailimageTwo": "https://img.alicdn.com/imgextra/i4/25004642/TB2fGt1t7yWBuNjy0FpXXassXXa_!!25004642.jpg",
+      "detailimageThree": "https://img.alicdn.com/imgextra/i2/25004642/TB2JUQYaUz.BuNjt_j7XXX0nFXa_!!25004642.jpg"
+    },
+    {
+      "id": 4526,
+      "repertory": 200,
+      "allsales": 3000,
+      "name": "乐町T恤吊带连衣裙ins超火两件套2018夏装◆款女韩版雪纺A字裙潮 ",
+      "imgUrl": "https://img.alicdn.com/imgextra/i3/513051429/TB23DhpqKSSBuNjy0FlXXbBpVXa_!!513051429.jpg_430x430q90.jpg",
+      "price": 879,
+      "sale": 456,
+      "detailimageOne": "https://img.alicdn.com/imgextra/i4/513051429/TB2X0BvfUOWBKNjSZKzXXXfWFXa_!!513051429.jpg",
+      "detailimageTwo": "https://img.alicdn.com/imgextra/i2/513051429/TB2Tnlffv6TBKNjSZJiXXbKVFXa_!!513051429.jpg",
+      "detailimageThree": "https://img.alicdn.com/imgextra/i2/513051429/TB2sKq4ivuSBuNkHFqDXXXfhVXa_!!513051429.jpg"
+    }
+  ]
 }

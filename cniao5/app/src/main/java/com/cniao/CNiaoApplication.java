@@ -12,6 +12,7 @@ import com.cniao.greendao.DaoSession;
 import com.cniao.service.LocationService;
 import com.cniao.utils.UserLocalData;
 import com.cniao.utils.Utils;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.mob.MobApplication;
 import com.mob.MobSDK;
 
@@ -55,6 +56,7 @@ public class CNiaoApplication extends MobApplication {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
+        Fresco.initialize(this);
         // 通过代码注册你的AppKey和AppSecret
         MobSDK.init(this, "201f8a7a91c30", "c63ec5c1eeac1f873ec78c1365120431");
 

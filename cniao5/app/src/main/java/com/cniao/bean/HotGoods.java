@@ -1,5 +1,6 @@
 package com.cniao.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  *            同时,也是首页跳转到商品列表 的数据模型
  */
 
-public class HotGoods {
+public class HotGoods implements Serializable{
 
     /**
      * copyright :
@@ -85,7 +86,7 @@ public class HotGoods {
         this.list = list;
     }
 
-    public static class ListEntity {
+    public static class ListEntity implements Serializable{
         /**
          * id : 157
          * categoryId : 3
@@ -100,15 +101,12 @@ public class HotGoods {
          * detailimageTwo : https://img.alicdn.com/imgextra/i3/3663553983/TB2yTbCv7yWBuNjy0FpXXassXXa_!!3663553983.jpg
          * detailimageThree : https://img.alicdn.com/imgextra/i1/3663553983/TB2jNQCv21TBuNjy0FjXXajyXXa_!!3663553983.jpg
          */
-
         private int id;
-        private int categoryId;
-        private int campaignId;
         private int repertory;
         private int allsales;
         private String name;
         private String imgUrl;
-        private double price;
+        private int price;
         private int sale;
         private String detailimageOne;
         private String detailimageTwo;
@@ -120,22 +118,6 @@ public class HotGoods {
 
         public void setId(int id) {
             this.id = id;
-        }
-
-        public int getCategoryId() {
-            return categoryId;
-        }
-
-        public void setCategoryId(int categoryId) {
-            this.categoryId = categoryId;
-        }
-
-        public int getCampaignId() {
-            return campaignId;
-        }
-
-        public void setCampaignId(int campaignId) {
-            this.campaignId = campaignId;
         }
 
         public int getRepertory() {
@@ -174,7 +156,7 @@ public class HotGoods {
             return price;
         }
 
-        public void setPrice(double price) {
+        public void setPrice(int price) {
             this.price = price;
         }
 

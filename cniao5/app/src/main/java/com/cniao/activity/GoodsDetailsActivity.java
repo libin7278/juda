@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.cniao.CNiaoApplication;
 import com.cniao.R;
+import com.cniao.bean.HotGoods;
 import com.cniao.bean.HotGoodsBean;
 import com.cniao.contants.Contants;
 import com.cniao.helper.SharePresenter;
@@ -50,6 +51,8 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
     @BindView(R.id.tv_jieshao)
     TextView tvJieshao;
 
+    //1 主页  2 分类
+    private int from;
     private HotGoodsBean.ListEntity goodsBean;
     private CartShopProvider cartProvider;
 
@@ -60,9 +63,15 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     protected void init() {
-
-        //接收数据
-        goodsBean = (HotGoodsBean.ListEntity) getIntent().getSerializableExtra(Contants.WARE);
+        from = getIntent().getIntExtra("from",1);
+        if(from == 1){
+            //主页
+            goodsBean = (HotGoodsBean.ListEntity) getIntent().getSerializableExtra(Contants.WARE);
+        }else {
+            //主页
+            HotGoods.ListEntity goodsBean1 = (HotGoods.ListEntity) getIntent().getSerializableExtra(Contants.WARE);
+            goodsBean = new HotGoodsBean.ListEntity(goodsBean1.getId(),goodsBean1.getRepertory(),goodsBean1.getAllsales(),goodsBean1.getName(),goodsBean1.getImgUrl(),(int) goodsBean1.getPrice(),goodsBean1.getSale(),goodsBean1.getDetailimageOne(),goodsBean1.getDetailimageTwo(),goodsBean1.getDetailimageThree());
+        }
         if (goodsBean == null) {
             ToastUtils.showUiToast(this, "获取详情失败");
             finish();
@@ -75,10 +84,20 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
         initView(goodsBean);
 
         initToolBar(goodsBean);
-
     }
 
     private void initView(HotGoodsBean.ListEntity goodsBean) {
+        GlideUtils.loadFull(CNiaoApplication.sContext, goodsBean.getDetailimageOne(), iv1);
+        GlideUtils.loadFull(CNiaoApplication.sContext, goodsBean.getDetailimageTwo(), iv2);
+        GlideUtils.loadFull(CNiaoApplication.sContext, goodsBean.getDetailimageThree(), iv3);
+        GlideUtils.loadFull(CNiaoApplication.sContext, goodsBean.getImgUrl(), ivMain);
+        tvXiaoliang.setText("总销量：" + goodsBean.getAllsales());
+        tvKcun.setText("库存：" + goodsBean.getRepertory());
+        tvPrice.setText(""+goodsBean.getPrice());
+        tvJieshao.setText(goodsBean.getName());
+    }
+
+    private void initView(HotGoods.ListEntity goodsBean) {
         GlideUtils.loadFull(CNiaoApplication.sContext, goodsBean.getDetailimageOne(), iv1);
         GlideUtils.loadFull(CNiaoApplication.sContext, goodsBean.getDetailimageTwo(), iv2);
         GlideUtils.loadFull(CNiaoApplication.sContext, goodsBean.getDetailimageThree(), iv3);
@@ -94,6 +113,24 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
      * @param goodsBean
      */
     private void initToolBar(final HotGoodsBean.ListEntity goodsBean) {
+
+        mToolBar.setNavigationOnClickListener(this);
+        mToolBar.setRightButtonText("分享");
+        mToolBar.setRightButtonOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharePresenter.getInstance().showShareDialogOnBottom
+                        (0, GoodsDetailsActivity.this, "聚搭",
+                                goodsBean.getName(), "0");
+            }
+        });
+    }
+
+    /**
+     * 初始化标题栏
+     * @param goodsBean
+     */
+    private void initToolBar(final HotGoods.ListEntity goodsBean) {
 
         mToolBar.setNavigationOnClickListener(this);
         mToolBar.setRightButtonText("分享");

@@ -37,7 +37,7 @@ public class HotGoodsBean implements Serializable{
          * detailimageTwo : https://img.alicdn.com/imgextra/i4/2121202225/TB2.njmtb5YBuNjSspoXXbeNFXa_!!2121202225.jpg
          * detailimageThree : https://img.alicdn.com/imgextra/i4/2121202225/TB27_nmtb5YBuNjSspoXXbeNFXa_!!2121202225.jpg
          */
-
+        private int id;
         private int repertory;
         private int allsales;
         private String name;
@@ -48,6 +48,26 @@ public class HotGoodsBean implements Serializable{
         private String detailimageTwo;
         private String detailimageThree;
 
+        public ListEntity(int id, int repertory, int allsales, String name, String imgUrl, int price, int sale, String detailimageOne, String detailimageTwo, String detailimageThree) {
+            this.id = id;
+            this.repertory = repertory;
+            this.allsales = allsales;
+            this.name = name;
+            this.imgUrl = imgUrl;
+            this.price = price;
+            this.sale = sale;
+            this.detailimageOne = detailimageOne;
+            this.detailimageTwo = detailimageTwo;
+            this.detailimageThree = detailimageThree;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
         public int getRepertory() {
             return repertory;
         }

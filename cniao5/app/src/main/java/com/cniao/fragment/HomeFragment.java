@@ -132,15 +132,15 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
 
         HomeCampaignBean bean4 = new HomeCampaignBean();
         Campaign campaign41 = new Campaign();
-        campaign41.setId(401);
+        campaign41.setId(4);
         campaign41.setTitle("精选睡裙");
         campaign41.setImgUrl("https://gw.alicdn.com/tfs/TB1KZlnw_tYBeNjy1XdXXXXyVXa-800-800.jpg_.webp");
         Campaign campaign42 = new Campaign();
-        campaign42.setId(402);
+        campaign42.setId(4);
         campaign42.setTitle("抹胸背心");
         campaign42.setImgUrl("https://gw.alicdn.com/tfs/TB1KN8ow_tYBeNjy1XdXXXXyVXa-800-800.jpg");
         Campaign campaign43 = new Campaign();
-        campaign43.setId(403);
+        campaign43.setId(4);
         campaign43.setTitle("塑形");
         campaign43.setImgUrl("https://gw.alicdn.com/bao/uploaded/i1/2567117665/TB2DyN4mBUSMeJjy1zkXXaWmpXa_!!2567117665.jpg_180x180xz.jpg_.webp");
         bean4.setCpOne(campaign43);

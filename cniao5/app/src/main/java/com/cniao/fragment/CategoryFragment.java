@@ -1,7 +1,6 @@
 package com.cniao.fragment;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
@@ -28,6 +27,7 @@ import com.cniao.bean.Category;
 import com.cniao.bean.HotGoods;
 import com.cniao.bean.VFMessage;
 import com.cniao.bean.Weather;
+import com.cniao.contants.Contants;
 import com.cniao.contants.HttpContants;
 import com.cniao.service.LocationService;
 import com.cniao.utils.GetJsonDataUtil;
@@ -38,9 +38,6 @@ import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
-import org.json.JSONObject;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -240,8 +237,20 @@ public class CategoryFragment extends BaseFragment {
      * @param firstCategorId 一级菜单的firstCategorId
      */
     private void requestWares(int firstCategorId) {
-
-        String JsonData = GetJsonDataUtil.getJson(mContext, "fenlei1.json");
+        String JsonData = null;
+        if(firstCategorId == 1){
+            JsonData = GetJsonDataUtil.getJson(mContext, "fenlei1.json");
+        }else if(firstCategorId == 2){
+            JsonData = GetJsonDataUtil.getJson(mContext, "fenlei2.json");
+        }else if(firstCategorId == 3){
+            JsonData = GetJsonDataUtil.getJson(mContext, "fenlei3.json");
+        }else if(firstCategorId == 4){
+            JsonData = GetJsonDataUtil.getJson(mContext, "fenlei4.json");
+        }else if(firstCategorId == 5){
+            JsonData = GetJsonDataUtil.getJson(mContext, "fenlei5.json");
+        }else {
+            JsonData = GetJsonDataUtil.getJson(mContext, "fenlei1.json");
+        }
         HotGoods hotGoods = parseData(JsonData);
         totalPage = hotGoods.getTotalPage();
         currPage = hotGoods.getCurrentPage();
@@ -253,19 +262,10 @@ public class CategoryFragment extends BaseFragment {
     public HotGoods parseData(String result) {    //Gson 解析
         HotGoods detail = new HotGoods();
         try {
-            JSONObject object = new JSONObject(result);
             Gson gson = new Gson();
             HotGoods hotGoods = gson.fromJson(result, HotGoods.class);
             Log.e("hotGoods","hotGoods=="+hotGoods);
             return hotGoods;
-//            JSONArray data = object.getJSONArray("list");
-//            Gson gson = new Gson();
-//            for (int i = 0; i < data.length(); i++) {
-//                HotGoods entity = gson.fromJson(data.optJSONObject(i).toString(),
-//                        HotGoods.class);
-//                detail.add(entity);
-//                Log.e("TAG", entity.getList().get(0));
-//            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -290,11 +290,8 @@ public class CategoryFragment extends BaseFragment {
                         HotGoods.ListEntity listBean = datas.get(position);
 
                         Intent intent = new Intent(getContext(), GoodsDetailsActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("itemClickGoods", (Serializable) listBean);
-                        intent.putExtras(bundle);
+                        intent.putExtra(Contants.WARE,listBean);
+                        intent.putExtra("from",2);
                         startActivity(intent);
                     }
 
@@ -370,8 +367,8 @@ public class CategoryFragment extends BaseFragment {
             city = cityName.substring(0, cityName.length() - 1);
             province = provinceName.substring(0, provinceName.length() - 1);
         } else {
-            city = "武汉";
-            province = "湖北";
+            city = "西安";
+            province = "陕西";
         }
 
         String url = HttpContants.requestWeather + "?key=201f8a7a91c30&city=" + city +
@@ -380,12 +377,12 @@ public class CategoryFragment extends BaseFragment {
         OkHttpUtils.get().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
-
+                Log.e("TAG",e.getMessage(),e);
             }
 
             @Override
             public void onResponse(String response, int id) {
-
+                Log.e("TAG",response);
 
                 Weather weather = mGson.fromJson(response, Weather.class);
                 List<Weather.ResultBean> result = weather.getResult();
@@ -393,17 +390,17 @@ public class CategoryFragment extends BaseFragment {
                 List<Weather.ResultBean.FutureBean> future = result.get(0).getFuture();
                 dayWeather = future.get(0).getDayTime();
                 nightWeather = future.get(0).getNight();
-                showWeather();
+                showWeather(future.get(0).getTemperature());
             }
         });
     }
 
     /**
      * 展示天气数据
+     * @param temperature
      */
-    private void showWeather() {
-        mDayWeather.setText("23 ℃" );
-        //mNightWeather.setText("晚间: " + nightWeather);
+    private void showWeather(String temperature) {
+        mDayWeather.setText(temperature);
     }
 
 

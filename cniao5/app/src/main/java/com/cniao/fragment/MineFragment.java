@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.cniao.CNiaoApplication;
 import com.cniao.R;
 import com.cniao.activity.AddressListActivity;
@@ -13,8 +14,8 @@ import com.cniao.activity.MyFavoriteActivity;
 import com.cniao.activity.MyOrdersActivity;
 import com.cniao.bean.User;
 import com.cniao.contants.Contants;
-import com.cniao.utils.GlideUtils;
 import com.cniao.utils.ToastUtils;
+import com.cniao.widget.CircleTransform;
 
 import java.util.Random;
 
@@ -36,9 +37,9 @@ public class MineFragment extends BaseFragment {
     @BindView(R.id.img_head)
     CircleImageView mImageHead;
     @BindView(R.id.txt_username)
-    TextView        mTxtUserName;
+    TextView mTxtUserName;
     @BindView(R.id.btn_logout)
-    Button          mbtnLogout;
+    Button mbtnLogout;
 
 
     @Override
@@ -72,12 +73,14 @@ public class MineFragment extends BaseFragment {
                 if (user == null) {
                     Intent intent2 = new Intent(getActivity(), LoginActivity.class);
                     startActivityForResult(intent2, Contants.REQUEST_CODE);
-                } else {
-                    ToastUtils.showSafeToast(getContext(), "更换头像或修改昵称");
                 }
                 break;
             case R.id.btn_logout:
+                if(CNiaoApplication.getInstance().getUser() != null){
+                    ToastUtils.showSafeToast(getContext(), "退出登录成功");
+                }
                 CNiaoApplication.getInstance().clearUser();
+
                 showUser(null);
                 break;
         }
@@ -93,9 +96,15 @@ public class MineFragment extends BaseFragment {
 
     private void showUser(User user) {
         if (user != null) {
-            mTxtUserName.setText("聚搭"+new Random().nextInt(10));
-            GlideUtils.load(getContext(), user.getLogo_url(), mImageHead);
+            mTxtUserName.setText(user.getUsername());
+            int[] urls = {R.drawable.abc,R.drawable.abcd,R.drawable.abcde,R.drawable.abcef};
+            Glide.with(getContext())
+                    .load(user.getLogo_url())
+                    .error(urls[new Random().nextInt(4)])
+                    .transform(new CircleTransform(mContext))
+                    .into(mImageHead);
         } else {
+            mImageHead.setImageResource(R.drawable.default_head);
             mTxtUserName.setText("请登陆");
         }
     }

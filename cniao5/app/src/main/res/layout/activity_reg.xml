@@ -134,7 +134,7 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:paddingLeft="@dimen/largePadding"
-        android:text="点击‘继续’ 按钮，表示你同意《轻松购用户协议》"
+        android:text="点击‘继续’ 按钮，表示你同意《聚搭用户协议》"
         android:textColor="@color/border_color"
         android:textSize="12sp"
         />

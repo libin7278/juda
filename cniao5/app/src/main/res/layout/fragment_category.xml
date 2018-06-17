@@ -114,8 +114,9 @@
                             android:layout_weight="3"
                             android:gravity="center"
                             android:text="23℃"
+                            android:paddingRight="2dp"
                             android:textColor="@color/ivory"
-                            android:textSize="24sp" />
+                            android:textSize="22sp" />
 
                         <TextView
                             android:id="@+id/tv_night_weather"

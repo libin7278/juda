@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cniao.CNiaoApplication;
-import com.cniao.activity.LoginActivity;
 import com.cniao.bean.User;
+import com.cniao.utils.ToastUtils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -60,9 +60,7 @@ public abstract class BaseFragment extends Fragment {
             if (user != null) {
                 super.startActivity(intent);    //需要登录,切已经登录.直接跳到目标activity中
             } else {
-                CNiaoApplication.getInstance().putIntent(intent);
-                Intent loginIntent = new Intent(getActivity(), LoginActivity.class);
-                super.startActivity(loginIntent);
+                ToastUtils.showUiToast(mContext,"请先登录");
             }
         } else {
             super.startActivity(intent);

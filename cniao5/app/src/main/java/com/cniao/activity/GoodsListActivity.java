@@ -169,13 +169,13 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
     @Override
     public void onTabSelected(final TabLayout.Tab tab) {
 
+        Log.e("TAG", index + "================");
         String JsonData;
         switch (index) {
             case 1:
                 if (TAG_SALE == (int) tab.getTag()) {
                     JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist111.json");
                 } else if (TAG_PRICE == (int) tab.getTag()) {
-
                     JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist11.json");
                 } else {
                     JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist1.json");
@@ -185,7 +185,6 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
                 if (TAG_SALE == (int) tab.getTag()) {
                     JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist222.json");
                 } else if (TAG_PRICE == (int) tab.getTag()) {
-
                     JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist22.json");
                 } else {
                     JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist2.json");
@@ -195,7 +194,6 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
                 if (TAG_SALE == (int) tab.getTag()) {
                     JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist333.json");
                 } else if (TAG_PRICE == (int) tab.getTag()) {
-
                     JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist33.json");
                 } else {
                     JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist3.json");
@@ -215,7 +213,6 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
                 if (TAG_SALE == (int) tab.getTag()) {
                     JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist111.json");
                 } else if (TAG_PRICE == (int) tab.getTag()) {
-
                     JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist11.json");
                 } else {
                     JsonData = GetJsonDataUtil.getJson(GoodsListActivity.this, "goodlist1.json");
@@ -270,20 +267,19 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
             return;
         }
 
-        if (mWaresAdapter == null) {
-            mWaresAdapter = new WaresAdapter(this, datas);
-            mWaresAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(View view, int position) {
-                    HotGoodsBean.ListEntity item = mWaresAdapter.getItem(position);
+        mWaresAdapter = new WaresAdapter(this, datas);
+        mWaresAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                HotGoodsBean.ListEntity item = mWaresAdapter.getItem(position);
 
-                    Intent intent = new Intent(GoodsListActivity.this, GoodsDetailsActivity.class);
+                Intent intent = new Intent(GoodsListActivity.this, GoodsDetailsActivity.class);
+                intent.putExtra("from",1);
+                intent.putExtra(Contants.WARE, item);
+                startActivity(intent);
+            }
+        });
 
-                    intent.putExtra(Contants.WARE,item);
-                    startActivity(intent);
-                }
-            });
-        }
         //mAdatper = new HotGoodsAdapter(datas, this);
         mRecyclerview.setAdapter(mWaresAdapter);
         if (actionType == ACTION_LIST) {

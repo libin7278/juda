@@ -11,6 +11,13 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
+    public User(Long id, String email, String logo_url, String username, String mobi) {
+        this.id = id;
+        this.email = email;
+        this.logo_url = logo_url;
+        this.username = username;
+        this.mobi = mobi;
+    }
 
     private Long   id;
     private String email;
